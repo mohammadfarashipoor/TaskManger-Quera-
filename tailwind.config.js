@@ -3,7 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      FontSize: {
+      fontSize: {
         "heading-l": "32px",
         "heading-m": "28px",
         "heading-s": "24px",
@@ -21,18 +21,19 @@ export default {
         "bold-s": "14px",
         "bold-xs": "12px",
       },
-      Spacing: {
+      spacing: {
         xs: "8px",
         s: "16px",
         m: "24px",
         l: "32px",
         xl: "40px",
       },
-      Colors: {
+      colors: {
         gray: {
           primary: "#868E96",
           secondary: "#F1F3F5",
           darker: "#343A40",
+          light: "#AAAAAA",
         },
         red: {
           primary: "#FA5252",
