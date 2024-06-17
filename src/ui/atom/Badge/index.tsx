@@ -1,9 +1,9 @@
-interface LabelBoxProps {
+interface BadgeProps {
   textLabel: string;
   color?: string;
   className?: string;
 }
-function LabelBox(props: LabelBoxProps) {
+function Badge(props: BadgeProps) {
   const { textLabel, color = "blue", className } = props;
   return (
     <span
@@ -14,4 +14,4 @@ function LabelBox(props: LabelBoxProps) {
   );
 }
 
-export default LabelBox;
+export default Badge;
