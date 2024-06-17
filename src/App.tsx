@@ -4,9 +4,6 @@ import ForgotPage from "@/pages/auth/forget";
 import ResetPage from "@/pages/auth/reset";
 import RegisterPage from "@/pages/auth/register";
 import LoginPage from "@/pages/auth/login";
-import "./assets/styles/index.css";
-
-import HeadingL from "./ui/atom/typography/HeadingL";
 
 function App() {
 	return (
@@ -19,7 +16,6 @@ function App() {
 					<Route path="/forgot" element={<ForgotPage />} />
 				</Route>
 			</Routes>
-			<HeadingL color="gradient">کوئرا تسک منیجر</HeadingL>
 		</>
 	);
 }
