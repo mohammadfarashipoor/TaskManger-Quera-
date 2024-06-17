@@ -1,6 +1,7 @@
 import { ReactSVG } from "react-svg";
 interface SvgIconProps {
   name: string;
+  className?: string;
   height?: string;
   width?: string;
 }
