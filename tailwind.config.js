@@ -14,6 +14,7 @@ export default {
 				gray: {
 					primary: "#868E96",
 					secondary: "#F1F3F5",
+					light: "#AAAAAA",
 					darker: "#343A40",
 				},
 				red: {
