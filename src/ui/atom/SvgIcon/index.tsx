@@ -4,6 +4,7 @@ interface SvgIconProps {
   className?: string;
   height?: string;
   width?: string;
+  onClick?: (input: any) => any;
 }
 const SvgIcon = (props: SvgIconProps) => {
   const { name, height = "20", width = "20" } = props;
