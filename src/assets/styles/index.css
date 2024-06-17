@@ -3,24 +3,15 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "IRANYekan";
-  src: url("../fonts/iranyekan-medium.ttf") format("truetype");
-  font-weight: normal;
+  font-family: "IranYekanWebBold";
+  src: url("../fonts/Iranyekan_800.ttf") format("truetype");
+  font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "IRANYekan";
-  src: url("../fonts/irankyekan-bold.ttf") format("truetype");
-  font-weight: 700;
+  font-family: "IranYekanWebRegular";
+  src: url("../fonts/Iranyekan_400.ttf") format("truetype");
+  font-weight: 400;
   font-style: normal;
-}
-@font-face {
-  font-family: "IRANYekan";
-  src: url("../fonts/iranyekan-extra-bold.ttf") format("truetype");
-  font-weight: 800;
-  font-style: normal;
-}
-* {
-  font-family: "IRANYekan" !important;
 }
