@@ -37,7 +37,7 @@ function App() {
         <Route path="/reset" element={<ResetPage />} />
         <Route path="/forgot" element={<ForgotPage />} />
       </Route>
-      <Route path="*" element={<NotFoundPage />}></Route>
+      <Route path="*" element={<NotFoundPage />}/>
     </Routes>
   );
 }
