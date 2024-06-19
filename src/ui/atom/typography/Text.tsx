@@ -1,4 +1,4 @@
-import type React from "react";
+import React from "react";
 
 const colorClassMap = {
 	white: "text-white",
@@ -9,79 +9,99 @@ const colorClassMap = {
 		"inline-block text-transparent bg-clip-text bg-gradient-to-r from-hgradient-primary to-hgradient-secondary",
 };
 
-type TypoColor = "white" | "gray" | "black" | "brandPrimary" | "gradient";
+type TextColor = keyof typeof colorClassMap;
+
+const sizeMap = {
+	bodyXS: {
+		fontSizeClass: "text-[12px]",
+		element: "p",
+		fontClass: "font-yekan-normal",
+	},
+	bodyS: {
+		fontSizeClass: "text-[14px]",
+		element: "p",
+		fontClass: "font-yekan-normal",
+	},
+	bodyM: {
+		fontSizeClass: "text-[16px]",
+		element: "p",
+		fontClass: "font-yekan-normal",
+	},
+	bodyL: {
+		fontSizeClass: "text-[20px]",
+		element: "p",
+		fontClass: "font-yekan-normal",
+	},
+	bodyXL: {
+		fontSizeClass: "text-[24px]",
+		element: "p",
+		fontClass: "font-yekan-normal",
+	},
+	boldXS: {
+		fontSizeClass: "text-[12px]",
+		element: "strong",
+		fontClass: "font-yekan-bold",
+	},
+	boldS: {
+		fontSizeClass: "text-[14px]",
+		element: "strong",
+		fontClass: "font-yekan-bold",
+	},
+	boldM: {
+		fontSizeClass: "text-[16px]",
+		element: "strong",
+		fontClass: "font-yekan-bold",
+	},
+	boldL: {
+		fontSizeClass: "text-[20px]",
+		element: "strong",
+		fontClass: "font-yekan-bold",
+	},
+	boldXL: {
+		fontSizeClass: "text-[24px]",
+		element: "strong",
+		fontClass: "font-yekan-bold",
+	},
+	headingXS: {
+		fontSizeClass: "text-[20px]",
+		element: "h4",
+		fontClass: "font-yekan-bold",
+	},
+	headingS: {
+		fontSizeClass: "text-[24px]",
+		element: "h3",
+		fontClass: "font-yekan-bold",
+	},
+	headingM: {
+		fontSizeClass: "text-[28px]",
+		element: "h2",
+		fontClass: "font-yekan-bold",
+	},
+	headingL: {
+		fontSizeClass: "text-[32px]",
+		element: "h1",
+		fontClass: "font-yekan-bold",
+	},
+};
+
+type TextSize = keyof typeof sizeMap;
 
 interface TextProps {
 	children: string;
-	color: TypoColor;
-	variant: "body" | "bold" | "heading";
-	size: "XS" | "S" | "M" | "L" | "XL";
+	textColor: TextColor;
+	textSize: TextSize;
 }
 
-type SizeMap = {
-	[key in "XS" | "S" | "M" | "L" | "XL"]?: string;
-};
+const Text: React.FC<TextProps> = ({ children, textColor, textSize }) => {
+	const colorClass = colorClassMap[textColor];
+	const { fontSizeClass, element, fontClass } = sizeMap[textSize];
 
-const sizeMap: { [key in TextProps["variant"]]: SizeMap } = {
-	body: {
-		XS: "12px",
-		S: "14px",
-		M: "16px",
-		L: "20px",
-		XL: "24px",
-	},
-	bold: {
-		XS: "12px",
-		S: "14px",
-		M: "16px",
-		L: "20px",
-		XL: "24px",
-	},
-	heading: {
-		XS: "20px",
-		S: "24px",
-		M: "28px",
-		L: "32px",
-	},
-};
+	const Element = element as keyof JSX.IntrinsicElements;
 
-type ElementMap = {
-	body: "p";
-	bold: "b";
-	heading: {
-		XS: "h4";
-		S: "h3";
-		M: "h2";
-		L: "h1";
-	};
-};
-
-const elementMap: ElementMap = {
-	body: "p",
-	bold: "b",
-	heading: {
-		XS: "h4",
-		S: "h3",
-		M: "h2",
-		L: "h1",
-	},
-};
-
-const Text: React.FC<TextProps> = ({ children, color, variant, size }) => {
-	const colorClass = colorClassMap[color];
-	const fontSize = sizeMap[variant][size];
-	const Element =
-		variant === "heading"
-			? elementMap.heading[size as keyof ElementMap["heading"]]
-			: elementMap[variant];
-
-	return (
-		<Element
-			className={`font-yekan-${variant === "bold" ? "bold" : "normal"} ${colorClass}`}
-			style={{ fontSize }}
-		>
-			{children}
-		</Element>
+	return React.createElement(
+		Element,
+		{ className: `${fontClass} ${colorClass} ${fontSizeClass}` },
+		children,
 	);
 };
 
