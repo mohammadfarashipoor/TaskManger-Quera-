@@ -7,7 +7,6 @@ interface ButtonProps {
   className: string;
   children?: React.ReactNode;
   isRoundedFull:boolean
-//   roundedSide:string; 
   isBold:boolean;
   name:string;
   colorClass:string;
