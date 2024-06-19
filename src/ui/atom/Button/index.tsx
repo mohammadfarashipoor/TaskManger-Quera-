@@ -8,20 +8,24 @@ interface ButtonProps {
   children?: React.ReactNode;
   isRoundedFull:boolean
   isBold:boolean;
+  isSmallRoundedButton:boolean;
   name:string;
   colorClass:string;
+
 }
 
-export const Button = ({ onClick, className, children ,isBold,name,isRoundedFull}: ButtonProps) => {
+export const Button = ({ onClick, className, children ,isBold,name,isRoundedFull,isSmallRoundedButton}: ButtonProps) => {
 
   return (
     <button
-      className={`bg-brand-primary ${isRoundedFull?"rounded-md":"rounded-l-md"}  w-full text-white p-2.5  gap-2 ${className}`}
+      className={`bg-brand-primary 
+        ${isRoundedFull ? isSmallRoundedButton ?"w-[125px] rounded-md" : "w-full rounded-md"  : "rounded-l-md w-[91px]"}
+         text-white p-2.5 gap-2 ${className}`}
       onClick={onClick}
     >
       <div className="flex justify-center items-center gap-1">
-        {isBold ? <BoldXS>{children}</BoldXS> : <BodyXS>{children}</BodyXS>}
         <SvgIcon name={name} />
+        {isBold ? <BoldXS>{children}</BoldXS> : <BodyXS>{children}</BodyXS>}
       </div>
     </button>
   );
