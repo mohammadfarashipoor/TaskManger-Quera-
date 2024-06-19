@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type ReactNode } from "react";
 
 const colorClassMap = {
 	white: "text-white",
@@ -87,12 +87,16 @@ const sizeMap = {
 type TextSize = keyof typeof sizeMap;
 
 interface TextProps {
-	children: string;
-	textColor: TextColor;
-	textSize: TextSize;
+	children: ReactNode;
+	textColor?: TextColor;
+	textSize?: TextSize;
 }
 
-const Text: React.FC<TextProps> = ({ children, textColor, textSize }) => {
+const Text: React.FC<TextProps> = ({
+	children,
+	textColor = "black",
+	textSize = "bodyM",
+}) => {
 	const colorClass = colorClassMap[textColor];
 	const { fontSizeClass, element, fontClass } = sizeMap[textSize];
 
