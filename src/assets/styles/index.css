@@ -15,3 +15,10 @@
   font-weight: 400;
   font-style: normal;
 }
+.auth-layout {
+  background-image: url("../images/background.svg");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-attachment: fixed;
+  background-size: 100% 60%;
+}
