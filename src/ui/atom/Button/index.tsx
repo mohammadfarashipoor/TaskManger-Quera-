@@ -1,7 +1,6 @@
 import React from "react";
 import SvgIcon from "../SvgIcon";
-import BodyXS from "../typography/BodyXS";
-import BoldXS from "../typography/BoldXS";
+import Text from "../typography/Text";
 interface ButtonProps {
   onClick: () => void;
   className?: string;
@@ -36,7 +35,15 @@ export const Button = ({
     >
       <div className="flex justify-center items-center gap-1">
         {iconName && <SvgIcon name={iconName} />}
-        {isBold ? <BoldXS>{children}</BoldXS> : <BodyXS>{children}</BodyXS>}
+        {isBold ? (
+          <Text textSize="boldXS" textColor="white">
+            {children}
+          </Text>
+        ) : (
+          <Text textSize="bodyXS" textColor="white">
+            {children}
+          </Text>
+        )}
       </div>
     </button>
   );
