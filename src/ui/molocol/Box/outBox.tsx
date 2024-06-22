@@ -19,7 +19,7 @@ export const OutBox: FC<OutBoxProps> = ({
 }) => {
   if (isOpen === false) return null;
   const classWrap =
-    "bg-white rounded-[20px] shadow-custom absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center";
+    "bg-white rounded-[20px] shadow-custom absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center pr-6 pl-6 pb-6";
   return (
     <>
       {!isOpen ? (

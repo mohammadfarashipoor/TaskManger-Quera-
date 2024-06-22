@@ -11,7 +11,7 @@ function AuthLayout() {
 
   return (
     <div className="flex flex-col h-[100vh] auth-layout">
-      <div className="z-[1000] fixed w-full">
+      <div className="fixed w-full">
         <nav className="flex flex-row-reverse items-center justify-between mt-[60px] mx-[80px]">
           <div className="flex items-center gap-xs ">
             <span className="text-body-m">{statusText}</span>
