@@ -4,8 +4,8 @@ import { FC, ReactNode } from "react";
 
 interface OutBoxProps {
   children: ReactNode;
-  isOpen: boolean;
-  toggle: () => void;
+  isOpen?: boolean;
+  toggle?: () => void;
   title: string;
   className: string;
 }
