@@ -14,7 +14,7 @@ const InputText: React.FC<InputTextProps> = (props) => {
     formState: { errors },
   } = useFormContext();
   return (
-    <div className="flex flex-col items-end gap-xs self-stretch">
+    <div className="flex flex-col items-start gap-xs self-stretch">
       {label && <label htmlFor={name}>{label}</label>}
       <input
         id={name}
