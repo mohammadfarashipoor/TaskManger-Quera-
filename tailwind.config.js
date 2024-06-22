@@ -3,35 +3,18 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      FontSize: {
-        "heading-l": "32px",
-        "heading-m": "28px",
-        "heading-s": "24px",
-        "heading-xs": "20px",
-
-        "body-xl": "24px",
-        "body-l": "20px",
-        "body-m": "16px",
-        "body-s": "14px",
-        "body-xs": "12px",
-
-        "bold-xl": "24px",
-        "bold-l": "20px",
-        "bold-m": "16px",
-        "bold-s": "14px",
-        "bold-xs": "12px",
-      },
-      Spacing: {
+      spacing: {
         xs: "8px",
         s: "16px",
         m: "24px",
         l: "32px",
         xl: "40px",
       },
-      Colors: {
+      colors: {
         gray: {
           primary: "#868E96",
           secondary: "#F1F3F5",
+          light: "#AAAAAA",
           darker: "#343A40",
         },
         red: {
@@ -86,6 +69,17 @@ export default {
           primary: "#FD7E14",
           secondary: "#FFE8CC",
         },
+        hgradient: {
+          primary: "#118C80",
+          secondary: "#4AB7D8",
+        },
+      },
+      fontFamily: {
+        "yekan-bold": ["IranYekanWebBold"],
+        "yekan-normal": ["IranYekanWebRegular"],
+      },
+      boxShadow: {
+        custom: "0 4px 6px rgba(50,50,93,0.4)",
       },
     },
   },
