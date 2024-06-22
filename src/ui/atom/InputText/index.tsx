@@ -9,10 +9,10 @@ interface InputTextProps {
 
 const InputText: React.FC<InputTextProps> = (props) => {
   const { name, label, classNames, type = "text" } = props;
-  // const {
-  //   register,
-  //   formState: { errors },
-  // } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
   return (
     <div className="flex flex-col items-end gap-xs self-stretch">
       {label && <label htmlFor={name}>{label}</label>}
@@ -20,9 +20,9 @@ const InputText: React.FC<InputTextProps> = (props) => {
         id={name}
         type={type}
         className={`p-xs self-stretch rounded-[6px] border border-gray-400 h-xl ${classNames} `}
-        //  {...register(name)}
+        {...register(name)}
       />
-      {/* {errors[name] && <span>{errors[name].message}</span>} */}
+      {errors[name] && <span>{errors[name].message}</span>}
     </div>
   );
 };
