@@ -20,7 +20,7 @@ function LoginPage() {
     <div>
       <FormContainer onSubmit={onSubmit} schema={schemaLogin}>
         <OutBox
-          className="w-[640px] h-[429px] px-8"
+          className="w-[640px] px-8"
           title="به کوئرا تسک منیجر خوش برگشتی"
         >
           <InputText name="username" label="نام کاربری" classNames="mb-4" />
