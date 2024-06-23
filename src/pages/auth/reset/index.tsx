@@ -1,3 +1,8 @@
+import { Button } from "@/ui/atom/Button";
+import InputText from "@/ui/atom/InputText";
+import { OutBox } from "@/ui/molocol/Box";
+import FormContainer from "@/ui/molocol/FormContainer";
+
 function ResetPage() {
   return (
     <>
