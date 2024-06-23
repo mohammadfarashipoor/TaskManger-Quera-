@@ -2,8 +2,8 @@ import React from "react";
 import SvgIcon from "../SvgIcon";
 import Text from "../typography/Text";
 interface ButtonProps {
-  onClick: () => void;
-  className?: string;
+  type?: "submit" | "reset" | "button" | undefined ;
+  className?:string;
   children: React.ReactNode;
   isLeftRounded?: boolean;
   isBold?: boolean;
@@ -12,7 +12,7 @@ interface ButtonProps {
 }
 
 export const Button = ({
-  onClick,
+  type,
   className,
   children,
   isBold,
@@ -22,6 +22,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
+      type={type}
       className={`bg-brand-primary 
         ${
           isLeftRounded
@@ -31,16 +32,18 @@ export const Button = ({
             : "w-full rounded-md"
         }
          text-white p-2.5 gap-2 ${className}`}
-      onClick={onClick}
+        
+        
+         
     >
       <div className="flex justify-center items-center gap-1">
         {iconName && <SvgIcon name={iconName} />}
         {isBold ? (
-          <Text textSize="boldXS" textColor="white">
+          <Text textSize="boldS" textColor="white">
             {children}
           </Text>
         ) : (
-          <Text textSize="bodyXS" textColor="white">
+          <Text textSize="bodyS" textColor="white">
             {children}
           </Text>
         )}
