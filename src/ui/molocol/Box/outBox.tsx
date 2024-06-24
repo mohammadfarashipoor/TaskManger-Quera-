@@ -32,9 +32,10 @@ export const OutBox: FC<OutBoxProps> = ({
       ) : (
         <>
           <div
-            className="fixed inset-0"
+            className="fixed inset-0 w-screen h-screen"
             style={{ backgroundColor: "rgba(23, 25, 27, 0.6)" }}
           ></div>
+          {/* <div className="fixed inset-0  flex items-center justify-center z-50 w-screen h-screen"> */}
           <div className={`${classWrap} ${className} `}>
             <div className="relative">
               <div className="text-center pt-6 mb-6">
@@ -50,6 +51,7 @@ export const OutBox: FC<OutBoxProps> = ({
             </div>
             {children}
           </div>
+          {/* </div> */}
         </>
       )}
     </>

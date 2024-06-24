@@ -42,7 +42,7 @@ function RegisterPage() {
             terms={<span className="underline"> قوانین و مقررات</span>}
             classNameLabel="mb-1"
           />
-          <Button type="submit" isBold>
+          <Button type="submit" isprimary={true} isBold>
             ثبت‌نام
           </Button>
         </FormContainer>

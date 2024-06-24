@@ -2,13 +2,14 @@ import React from "react";
 import SvgIcon from "../SvgIcon";
 import Text from "../typography/Text";
 interface ButtonProps {
-  type?: "submit" | "reset" | "button" | undefined ;
-  className?:string;
+  type?: "submit" | "reset" | "button" | undefined;
+  className?: string;
   children: React.ReactNode;
   isLeftRounded?: boolean;
   isBold?: boolean;
   isSmallRoundedButton?: boolean;
   iconName?: string;
+  isprimary?: boolean;
 }
 
 export const Button = ({
@@ -19,11 +20,17 @@ export const Button = ({
   iconName,
   isLeftRounded,
   isSmallRoundedButton,
+  isprimary,
 }: ButtonProps) => {
   return (
     <button
       type={type}
-      className={`bg-brand-primary 
+      className={`p-2.5 gap-2 ${className}
+        ${
+          isprimary
+            ? `bg-brand-primary  text-white`
+            : `bg-white text-brand-primary`
+        }
         ${
           isLeftRounded
             ? "rounded-l-md w-[91px]"
@@ -31,19 +38,16 @@ export const Button = ({
             ? "w-[125px] rounded-md"
             : "w-full rounded-md"
         }
-         text-white p-2.5 gap-2 ${className}`}
-        
-        
-         
+         `}
     >
       <div className="flex justify-center items-center gap-1">
         {iconName && <SvgIcon name={iconName} />}
         {isBold ? (
-          <Text textSize="boldS" textColor="white">
+          <Text textSize="boldS" textColor={isprimary}>
             {children}
           </Text>
         ) : (
-          <Text textSize="bodyS" textColor="white">
+          <Text textSize="bodyS" textColor={isprimary}>
             {children}
           </Text>
         )}

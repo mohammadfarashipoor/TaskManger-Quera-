@@ -15,3 +15,7 @@ export const inValidMsgRegister = {
   },
   checkBox: { message: "شما باید شرایط را بپذیرید" },
 };
+
+export const inValidMsgForgot = {
+  email: { email: " ایمیل را درست وارد کنید" },
+};

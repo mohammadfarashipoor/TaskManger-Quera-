@@ -27,9 +27,7 @@ const InputText: React.FC<InputTextProps> = (props) => {
         className={`p-xs self-stretch rounded-[6px] border border-gray-400 h-xl ${classNames} `}
         {...register(name)}
       />
-      {errors[name] && (
-        <span className="text-red-500 text-sm">{errors[name].message}</span>
-      )}
+      {errors[name] && <span className="text-sm">{errors[name].message}</span>}
     </div>
   );
 };
