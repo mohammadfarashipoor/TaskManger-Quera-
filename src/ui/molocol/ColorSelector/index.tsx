@@ -8,7 +8,7 @@ interface ColorSelectorProps {
 }
 
 const ColorSelector = (props: ColorSelectorProps) => {
-  const { selectedColorPalette, classNames, theme } = props;
+  const { selectedColorPalette, classNames = "", theme } = props;
   const colors: PaletteColorType[] = [
     "#228BE6",
     "#208D8E",
