@@ -9,7 +9,9 @@ interface ButtonProps {
   isBold?: boolean;
   isSmallRoundedButton?: boolean;
   iconName?: string;
-  isprimary?: boolean;
+  isRedButton?: boolean;
+  isOnlyBorderButton?: boolean;
+  isGrayButton?:boolean;
 }
 
 export const Button = ({
@@ -20,17 +22,23 @@ export const Button = ({
   iconName,
   isLeftRounded,
   isSmallRoundedButton,
-  isprimary,
+  isRedButton,
+  isOnlyBorderButton,
+  isGrayButton,
+
 }: ButtonProps) => {
   return (
-    <button
-      type={type}
-      className={`p-2.5 gap-2 ${className}
+    <div>
+      <button
+        type={type}
+        className={`p-2.5 ${className}
+        ${isRedButton ? "bg-red-primary" : ""}
         ${
-          isprimary
-            ? `bg-brand-primary  text-white`
-            : `bg-white text-brand-primary`
+          isOnlyBorderButton
+            ? "bg-white border-2 border-brand-primary"
+            : "bg-brand-primary"
         }
+        ${isGrayButton ? "bg-gray-primary" : ""}
         ${
           isLeftRounded
             ? "rounded-l-md w-[91px]"
@@ -39,20 +47,42 @@ export const Button = ({
             : "w-full rounded-md"
         }
          `}
-    >
-      <div className="flex justify-center items-center gap-1">
-        {iconName && <SvgIcon name={iconName} />}
+      >
         {isBold ? (
-          <Text textSize="boldS" textColor={isprimary}>
+          <Text
+            className="flex justify-center items-center gap-2"
+            textSize="boldS"
+            textColor={
+              isGrayButton
+                ? "black"
+                : isOnlyBorderButton
+                ? "brandPrimary"
+                : "white"
+            }
+          >
+            {iconName && <SvgIcon name={iconName} />}
+
             {children}
           </Text>
         ) : (
-          <Text textSize="bodyS" textColor={isprimary}>
+          <Text
+            className="flex justify-center items-center gap-2"
+            textSize="bodyS"
+            textColor={
+              isGrayButton
+                ? "black"
+                : isOnlyBorderButton
+                ? "brandPrimary"
+                : "white"
+            }
+          >
+            {iconName && <SvgIcon name={iconName} />}
+
             {children}
           </Text>
         )}
-      </div>
-    </button>
+      </button>
+    </div>
   );
 };
 
