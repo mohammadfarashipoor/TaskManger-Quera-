@@ -35,7 +35,7 @@ function AccountInfoPage() {
         />
         <InputText
           type="password"
-          name="password"
+          name="confirm"
           label="تکرار رمز عبور جدید"
           classNames="mb-2"
         />

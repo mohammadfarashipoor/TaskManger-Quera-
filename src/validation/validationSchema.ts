@@ -26,4 +26,9 @@ export const schemaAccountInfo = z.object({
   email: z.string().email(inValidMsgForgot.email.email),
   username: z.string().min(1, inValidMsgLogin.username.min),
   password: z.string().min(5, inValidMsgReset.password.min),
+  confirm: z.string().min(5, inValidMsgReset.confirm.min),
+})
+.refine((data) => data.password === data.confirm, {
+  message: "پسوردها برابر نیستند",
+  path: ["confirm"],
 });
