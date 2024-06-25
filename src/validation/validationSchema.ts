@@ -22,3 +22,8 @@ export const schemaPersonalInfo = z.object({
   lastName: z.string().min(1, inValidMsgPersonalInfo.lastName.min),
   phone: z.string().length(11, inValidMsgPersonalInfo.phone.length),
 });
+export const schemaAccountInfo = z.object({
+  email: z.string().email(inValidMsgForgot.email.email),
+  username: z.string().min(1, inValidMsgLogin.username.min),
+  password: z.string().min(5, inValidMsgReset.password.min),
+});
