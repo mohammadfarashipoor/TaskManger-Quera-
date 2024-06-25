@@ -35,7 +35,7 @@ export const Button = ({
         ${isRedButton ? "bg-red-primary" : ""}
         ${
           isOnlyBorderButton
-            ? "bg-white border border-2 border-brand-primary"
+            ? "bg-white border-2 border-brand-primary"
             : "bg-brand-primary"
         }
         ${isGrayButton ? "bg-gray-primary" : ""}
