@@ -1,44 +1,29 @@
 import React, { useState } from "react";
 import SvgIcon from "@/ui/atom/SvgIcon";
 import { FieldError, useFormContext } from "react-hook-form";
-import { OutBox } from "@/ui/molocol/Box";
 
 type ChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => void;
 
 interface CheckBoxProps {
-  acceptedTerms?: boolean;
-  terms?: React.ReactNode;
-  onChange?: ChangeHandler;
   labelText?: string;
   classNameLabel?: string;
+  terms?: React.ReactNode;
+  onTermsClick?: () => void;
 }
 
 const CheckBox = ({
-  // acceptedTerms,
-  onChange,
   labelText = "",
   classNameLabel = "",
   terms,
+  onTermsClick,
 }: CheckBoxProps) => {
   const {
     register,
     formState: { errors },
   } = useFormContext();
-  const [modalOpen, setModalOpen] = useState(false);
 
-  const handleLabelClick = () => {
-    setModalOpen(true);
-  };
+  const [isChecked, setIsChecked] = useState(false);
 
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
-
-  const handleChange: ChangeHandler = (e) => {
-    if (onChange) {
-      onChange(e);
-    }
-  };
   let errorMessage: string | undefined;
   if (errors["checkBox"]) {
     if (typeof errors["checkBox"] === "string") {
@@ -47,6 +32,11 @@ const CheckBox = ({
       errorMessage = (errors["checkBox"] as FieldError).message;
     }
   }
+
+  const handleChange: ChangeHandler = (e) => {
+    setIsChecked(e.target.checked);
+  };
+
   return (
     <div className="flex gap-2 ml-auto cursor-pointer items-center">
       <input
@@ -60,36 +50,25 @@ const CheckBox = ({
         <label
           htmlFor="checkbox"
           className={`cursor-pointer ${classNameLabel}`}
-          onClick={handleLabelClick} // Open modal on label click
+          onClick={onTermsClick}
         >
-          <span className="relative inline-block w-5 h-5 border-2 border-gray-300 rounded checked:border-brand-primary checked:bg-brand-secondary">
-            <SvgIcon
-              name="accept"
-              width="15"
-              height="15"
-              className="absolute w-4 h-4 ml-auto hidden peer-checked:block text-brand-primary"
-            />
+          <span className="relative inline-block w-5 h-5 border-2 border-gray-300 rounded">
+            {isChecked && (
+              <SvgIcon
+                name="accept"
+                width="15"
+                height="15"
+                className="absolute w-4 h-4 ml-auto block text-brand-primary top-0 left-0"
+              />
+            )}
           </span>
           {terms && <span>{terms}</span>}
           <span>{labelText}</span>
         </label>
-        {/* {errors["checkBox"] && typeof errors["checkBox"] === "object" && (
-          <span className="text-red-500 text-sm">
-            {errors["checkBox"].message}
-          </span>
-        )} */}
         {errorMessage && (
           <span className="text-red-500 text-sm">{errorMessage}</span>
         )}
       </div>
-      <OutBox
-        isOpen={modalOpen}
-        toggle={handleCloseModal}
-        title="قوانین و مقررات"
-        className="w-[800px] h-[509px]"
-      >
-        <p>fdfdgdf</p>
-      </OutBox>
     </div>
   );
 };
