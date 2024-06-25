@@ -5,12 +5,14 @@ interface FormContainerProps {
   onSubmit: any;
   children: React.ReactNode;
   schema: any;
+  className?: string;
 }
 
 const FormContainer: React.FC<FormContainerProps> = ({
   onSubmit,
   children,
   schema,
+  className,
 }) => {
   const methods = useForm({
     resolver: zodResolver(schema),
@@ -18,7 +20,9 @@ const FormContainer: React.FC<FormContainerProps> = ({
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>{children}</form>
+      <form className={className} onSubmit={methods.handleSubmit(onSubmit)}>
+        {children}
+      </form>
     </FormProvider>
   );
 };
