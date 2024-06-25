@@ -30,7 +30,7 @@ function ResetPage() {
               name="confrimPassword"
               type="password"
             ></InputText>
-            <Button type="submit" isBold isprimary>
+            <Button type="submit" isBold >
               اعمال تغییرات
             </Button>
           </OutBox>
