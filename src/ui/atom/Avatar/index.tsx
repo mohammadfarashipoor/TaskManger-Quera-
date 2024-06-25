@@ -1,22 +1,37 @@
+import Text from "../typography/Text";
+
 interface AvatarProps {
   avatarImage?: string;
   name?: string;
   backgroundColor?: string;
+  textColor?: string;
+  size?: "normal" | "big";
 }
 function Avatar(props: AvatarProps) {
-  const { avatarImage, name = "", backgroundColor = "black" } = props;
+  const {
+    avatarImage,
+    name = "",
+    size = "normal",
+    backgroundColor = "bg-yellow-100",
+    textColor = "text-yellow-600",
+  } = props;
   return avatarImage ? (
     <img
       src={avatarImage}
       alt="add-member"
-      className="w-[45px] h-[45px] fill-white rounded-[50%] p-[5px]"
+      className={` ${
+        size === "big" ? "w-[100px] h-[100px]" : "w-[45px] h-[45px]"
+      } fill-white rounded-[50%] p-[5px]`}
     />
   ) : (
-    <span
-      className={`flex items-center justify-center w-[45px] h-[45px] rounded-[50%] p-[5px] bg-${backgroundColor}`}
+    <Text
+      textSize={size === "big" ? "boldXL" : "boldXS"}
+      className={`flex items-center justify-center ${
+        size === "big" ? "w-[100px] h-[100px]" : "w-[45px] h-[45px]"
+      } rounded-[50%] p-[5px] ${backgroundColor + " " + textColor}`}
     >
       {name.slice(0, 2)}
-    </span>
+    </Text>
   );
 }
 
