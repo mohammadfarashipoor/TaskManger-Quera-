@@ -21,7 +21,7 @@ function ForgotPage() {
             title="فراموشی رمز عبور"
           >
             <InputText label="ایمیل خود را وارد کنید" name="email"></InputText>
-            <Button type="submit" isBold iconName="add">
+            <Button type="submit" isBold >
               دریافت ایمیل بازیابی رمز عبور
             </Button>
             <Text textColor="brandPrimary" textSize="boldS">بازگشت</Text>
