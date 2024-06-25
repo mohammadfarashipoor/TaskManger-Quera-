@@ -2,9 +2,8 @@ import { Button } from "@/ui/atom/Button";
 import InputText from "@/ui/atom/InputText";
 import { OutBox } from "@/ui/molocol/Box";
 import FormContainer from "@/ui/molocol/FormContainer";
-import { schemaReset } from "@/validation/validationSchema";
-
-function ResetPage() {
+import { schemaForgotPage } from "@/validation/validationSchema";
+function ForgotPage() {
   return (
     <>
       <div
@@ -15,23 +14,20 @@ function ResetPage() {
           transform: "translate(-50%, -50%)",
         }}
       >
-        <FormContainer onSubmit={onsubmit} schema={schemaReset}>
+        <FormContainer onSubmit={onsubmit} schema={schemaForgotPage}>
           <OutBox
             className="w-[640px] p-6 gap-8 flex flex-col ju"
-            title="تغییر رمز عبور"
+            title="فراموشی رمز عبور"
           >
             <InputText
-              label="رمز عبور جدید را وارد کنید"
-              name="password"
-              type="password"
-            ></InputText>
-            <InputText
-              label="تکرار رمز عبور"
-              name="confrimPassword"
-              type="password"
+              label="ایمیل خود را وارد کنید"
+              name="email"
             ></InputText>
             <Button type="submit" isBold isprimary>
-              اعمال تغییرات
+              دریافت ایمیل بازیابی رمز عبور
+            </Button>
+            <Button type="button" isBold isprimary={false}>
+              بازگشت
             </Button>
           </OutBox>
         </FormContainer>
@@ -40,4 +36,4 @@ function ResetPage() {
   );
 }
 
-export default ResetPage;
+export default ForgotPage;

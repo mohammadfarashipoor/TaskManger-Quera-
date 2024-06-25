@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import AuthLayout from "@/layouts/auth";
-import ForgotPage from "@/pages/auth/forget";
+import ForgotPage from "@/pages/auth/forgot";
 import ResetPage from "@/pages/auth/reset";
 import RegisterPage from "@/pages/auth/register";
 import LoginPage from "@/pages/auth/login";
