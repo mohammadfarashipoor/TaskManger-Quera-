@@ -1,4 +1,4 @@
-import zodResolver from "@/utils/zodResolver";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, FormProvider } from "react-hook-form";
 
 interface FormContainerProps {
@@ -12,21 +12,8 @@ const FormContainer: React.FC<FormContainerProps> = ({
   children,
   schema,
 }) => {
-  const Resolver = async (data: any) => {
-    const validationSchema = zodResolver(schema);
-    const errors: Record<string, { message: string }> = {};
-
-    for (const key in validationSchema) {
-      const result = validationSchema[key].validate(data[key]);
-      if (result !== true) {
-        errors[key] = { message: result };
-      }
-    }
-
-    return { values: data, errors };
-  };
   const methods = useForm({
-    resolver: Resolver,
+    resolver: zodResolver(schema),
   });
 
   return (
