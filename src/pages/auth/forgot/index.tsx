@@ -1,5 +1,6 @@
 import { Button } from "@/ui/atom/Button";
 import InputText from "@/ui/atom/InputText";
+import Text from "@/ui/atom/typography/Text";
 import { OutBox } from "@/ui/molocol/Box";
 import FormContainer from "@/ui/molocol/FormContainer";
 import { schemaForgotPage } from "@/validation/validationSchema";
@@ -19,16 +20,11 @@ function ForgotPage() {
             className="w-[640px] p-6 gap-8 flex flex-col ju"
             title="فراموشی رمز عبور"
           >
-            <InputText
-              label="ایمیل خود را وارد کنید"
-              name="email"
-            ></InputText>
-            <Button type="submit" isBold isprimary>
+            <InputText label="ایمیل خود را وارد کنید" name="email"></InputText>
+            <Button type="submit" isBold >
               دریافت ایمیل بازیابی رمز عبور
             </Button>
-            <Button type="button" isBold isprimary={false}>
-              بازگشت
-            </Button>
+            <Text textColor="brandPrimary" textSize="boldS">بازگشت</Text>
           </OutBox>
         </FormContainer>
       </div>
