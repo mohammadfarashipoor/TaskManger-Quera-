@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { inValidMsgLogin } from "./inValidMasseges";
+import { inValidMsgLogin, inValidMsgPersonalInfo } from "./inValidMasseges";
 import { inValidMsgForgot } from "./inValidMasseges";
 export const schemaLogin = z.object({
   username: z.string().min(1, inValidMsgLogin.username.min),
@@ -16,3 +16,8 @@ export const schemaReset = z
   .refine((data) => data.password === data.confirm, {
     message: "Passwords don't match",
   });
+export const schemaPersonalInfo = z.object({
+  firstName: z.string().min(1, inValidMsgPersonalInfo.firstName.min),
+  lastName: z.string().min(1, inValidMsgPersonalInfo.lastName.min),
+  phone: z.string().length(11, inValidMsgPersonalInfo.phone.length),
+});
