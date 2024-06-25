@@ -1,4 +1,5 @@
 import { useFormContext } from "react-hook-form";
+import Text from "../typography/Text";
 
 interface InputTextProps {
   name: string;
@@ -24,17 +25,17 @@ const InputText: React.FC<InputTextProps> = (props) => {
   } = useFormContext();
 
   return (
-    <div className="flex flex-col items-start gap-xs p-2">
+    <div className="flex flex-col items-start gap-xs py-2">
       {label && (
         <label className={classNameLabel} htmlFor={name}>
-          {label}
+          <Text>{label}</Text>
         </label>
       )}
-      <div className="flex">
+      <div className="flex w-full">
         <input
           id={name}
           type={type}
-          className={`p-xs self-stretch ${
+          className={`p-xs self-stretch w-full ${
             inlineElement ? "rounded-r-[6px]" : "rounded-[6px]"
           } border border-gray-400 h-xl ${classNames} `}
           {...register(name)}
