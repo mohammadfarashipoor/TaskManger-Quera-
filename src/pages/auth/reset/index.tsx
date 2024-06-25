@@ -27,10 +27,10 @@ function ResetPage() {
             ></InputText>
             <InputText
               label="تکرار رمز عبور"
-              name="confrimPassword"
+              name="confirm"
               type="password"
             ></InputText>
-            <Button type="submit" isBold >
+            <Button type="submit" isBold>
               اعمال تغییرات
             </Button>
           </OutBox>
