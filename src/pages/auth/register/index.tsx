@@ -43,7 +43,7 @@ function RegisterPage() {
             classNameLabel="mb-1"
             onTermsClick={handleTermsClick}
           />
-          <Button type="submit" isprimary={true} isBold>
+          <Button type="submit" isBold>
             ثبت‌نام
           </Button>
         </FormContainer>

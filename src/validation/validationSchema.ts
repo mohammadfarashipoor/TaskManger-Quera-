@@ -3,6 +3,8 @@ import {
   inValidMsgForgot,
   inValidMsgLogin,
   inValidMsgRegister,
+  inValidMsgPersonalInfo,
+  inValidMsgReset,
 } from "./inValidMasseges";
 export const schemaLogin = z.object({
   username: z.string().min(1, inValidMsgLogin.username.min),
@@ -33,9 +35,15 @@ export const schemaForgotPage = z.object({
 });
 export const schemaReset = z
   .object({
-    password: z.string(),
-    confirm: z.string(),
+    password: z.string().min(5, inValidMsgReset.password.min),
+    confirm: z.string().min(5, inValidMsgReset.confirm.min),
   })
   .refine((data) => data.password === data.confirm, {
-    message: "Passwords don't match",
+    message: "پسوردها برابر نیستند",
+    path: ["confirm"],
   });
+export const schemaPersonalInfo = z.object({
+  firstName: z.string().min(1, inValidMsgPersonalInfo.firstName.min),
+  lastName: z.string().min(1, inValidMsgPersonalInfo.lastName.min),
+  phone: z.string().length(11, inValidMsgPersonalInfo.phone.length),
+});

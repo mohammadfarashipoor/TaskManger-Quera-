@@ -22,7 +22,6 @@ function ProfileLayout() {
         </Text>
 
         <Button
-          isprimary
           iconName="arrow-side"
           type="button"
           className="w-[113px] h-[36px] mt-16"
