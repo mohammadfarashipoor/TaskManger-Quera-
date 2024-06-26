@@ -81,7 +81,7 @@ function ProfileLayout() {
           </div>
         </div>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 mr-[340px]">
         <Outlet />
       </div>
     </div>

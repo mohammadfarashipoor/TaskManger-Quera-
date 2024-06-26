@@ -24,10 +24,9 @@ export const schemaRegister = z.object({
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
       inValidMsgRegister.password.matches
     ),
-  checkBox: z.boolean().refine((value) => value === true, {
-    message: inValidMsgRegister.checkBox.message,
-    path: ["checkBox"],
-  }),
+  checkBox: z
+    .boolean()
+    .refine((val) => val === true, inValidMsgRegister.checkBox.message),
 });
 
 export const schemaForgotPage = z.object({
