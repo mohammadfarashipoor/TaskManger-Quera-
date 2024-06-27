@@ -5,8 +5,19 @@ import Text from "@/ui/atom/typography/Text";
 import FormContainer from "@/ui/molocol/FormContainer";
 import InputFile from "@/ui/atom/InputFile";
 import { schemaPersonalInfo } from "@/validation/validationSchema";
+import { useState } from "react";
 
 function PersonalInfoPage() {
+  const [pictureDivision, setPictureDivision] = useState("");
+
+  const chooseFile = (e: any) => {
+    const fileInput = e.target.files[0];
+    let displayURL = "";
+    if (fileInput) {
+      displayURL = URL.createObjectURL(fileInput);
+      setPictureDivision(displayURL);
+    }
+  };
   return (
     <div className="flex flex-col gap-l items-start p-7">
       <Text textSize="headingL">اطلاعات فردی</Text>
@@ -16,9 +27,15 @@ function PersonalInfoPage() {
         onSubmit={onsubmit}
       >
         <div className="flex items-center justify-center gap-4">
-          <Avatar name="Mohammad" size="big" />
+          <Avatar name="Mohammad" size="big" avatarImage={pictureDivision} />
           <div className="flex flex-col gap-2">
-            <InputFile labelText="ویرایش تصویر پروفایل" iconName="link" />
+            <InputFile
+              labelText="ویرایش تصویر پروفایل"
+              iconName="link"
+              name="profile"
+              accept="image"
+              onChange={chooseFile}
+            />
             <Text textSize="bodyXS">این تصویر برای عموم قابل مشاهده است</Text>
           </div>
         </div>

@@ -1,18 +1,24 @@
 import { Button } from "../Button";
 
 interface InputFileProps {
+  name: string;
   labelText: string;
   iconName?: string;
+  accept?: string;
+  onChange: (e: React.ChangeEvent) => void;
 }
 const InputFile: React.FC<InputFileProps> = (props) => {
-  const { labelText, iconName } = props;
+  const { labelText, iconName, name, onChange, accept = "*" } = props;
+
   return (
     <div className="w-full">
       <input
         type="file"
         className="hidden"
         id="hidden-file-input"
-        name="thumbnail"
+        accept={accept}
+        name={name}
+        onChange={(e) => onChange(e)}
       />
       <div
         className={`flex items-center justify-center gap-2 rounded border border-brand-primary`}
