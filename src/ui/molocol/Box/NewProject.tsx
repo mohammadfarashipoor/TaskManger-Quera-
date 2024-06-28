@@ -6,19 +6,21 @@ interface NewProjectProps {
   children: ReactNode;
   toggle: () => void;
   isOpen: boolean;
+  className?: string;
 }
 
 export const NewProject: FC<NewProjectProps> = ({
   children,
   toggle,
   isOpen,
+  className,
 }) => {
   if (isOpen === false) return null;
   return (
     <>
       {isOpen && (
         <div
-          className={`bg-white rounded-lg border w-[500px] h-[268px] text-center`}
+          className={`bg-white rounded-lg w-[500px] text-center absolute ${className}`}
         >
           <div className="mt-2 flex flex-row items-center justify-center relative">
             <SvgIcon
