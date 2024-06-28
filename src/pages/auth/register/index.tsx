@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import CheckBox from "@/ui/atom/CheckBox";
 import InputText from "@/ui/atom/InputText";
