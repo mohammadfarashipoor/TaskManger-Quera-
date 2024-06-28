@@ -20,11 +20,9 @@ const InputFile: React.FC<InputFileProps> = (props) => {
         name={name}
         onChange={(e) => onChange(e)}
       />
-      <div
-        className={`flex items-center justify-center gap-2 rounded border border-brand-primary`}
-      >
+      <div className={`flex items-center justify-center gap-2 rounded`}>
         <Button
-          isprimary={false}
+          isOnlyBorderButton
           isBold
           type="button"
           iconName={iconName ?? ""}
