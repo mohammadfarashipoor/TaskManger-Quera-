@@ -31,7 +31,6 @@ function PersonalInfoPage() {
           <div className="flex flex-col gap-2">
             <InputFile
               labelText="ویرایش تصویر پروفایل"
-              iconName="link"
               name="profile"
               accept="image"
               onChange={chooseFile}
@@ -42,9 +41,7 @@ function PersonalInfoPage() {
         <InputText name="firstName" label="نام" />
         <InputText name="lastName" label="نام خانوادگی" />
         <InputText name="phone" label="شماره تلفن" />
-        <Button type="submit" isprimary>
-          ثبت تغییرات
-        </Button>
+        <Button type="submit">ثبت تغییرات</Button>
       </FormContainer>
     </div>
   );
