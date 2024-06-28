@@ -6,6 +6,7 @@ interface InputTextProps {
   classNames?: string;
   label?: string;
   classNameLabel?: string;
+  placeholder?: string;
   type?: "text" | "number" | "password";
   inlineElement?: React.ReactNode;
 }
@@ -18,6 +19,7 @@ const InputText: React.FC<InputTextProps> = (props) => {
     classNameLabel,
     type = "text",
     inlineElement,
+    placeholder = "",
   } = props;
   const {
     register,
@@ -35,6 +37,7 @@ const InputText: React.FC<InputTextProps> = (props) => {
         <input
           id={name}
           type={type}
+          placeholder={placeholder}
           className={`p-xs self-stretch w-full ${
             inlineElement ? "rounded-r-[6px]" : "rounded-[6px]"
           } border border-gray-400 h-xl ${classNames} `}
