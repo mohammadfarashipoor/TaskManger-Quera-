@@ -2,9 +2,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, FormProvider } from "react-hook-form";
 
 interface FormContainerProps {
-  onSubmit: any;
+  onSubmit?: any;
   children: React.ReactNode;
-  schema: any;
+  schema?: any;
   className?: string;
 }
 

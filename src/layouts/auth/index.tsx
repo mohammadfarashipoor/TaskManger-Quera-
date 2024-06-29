@@ -27,7 +27,7 @@ function AuthLayout() {
           </Text>
         </nav>
       </div>
-      <div className="flex flex-grow items-center justify-center z-10">
+      <div className="flex flex-grow items-center justify-center ">
         <Outlet />
       </div>
     </div>
