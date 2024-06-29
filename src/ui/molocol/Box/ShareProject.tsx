@@ -6,19 +6,21 @@ interface ShareProjectProps {
   children: ReactNode;
   toggle: () => void;
   isOpen: boolean;
+  className?: string;
 }
 
 export const ShareProject: FC<ShareProjectProps> = ({
   children,
   toggle,
   isOpen,
+  className,
 }) => {
   if (isOpen === false) return null;
   return (
     <>
       {isOpen && (
         <div
-          className={`bg-white rounded-lg border w-[470px] h-[332px] text-center`}
+          className={`bg-white rounded-lg w-[470px] text-center absolute  ${className}`}
         >
           <div className="mt-2 flex flex-row items-center justify-center relative">
             <SvgIcon
