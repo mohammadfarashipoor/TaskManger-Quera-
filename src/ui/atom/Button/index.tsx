@@ -11,7 +11,7 @@ interface ButtonProps {
   iconName?: string;
   isRedButton?: boolean;
   isOnlyBorderButton?: boolean;
-  isGrayButton?:boolean;
+  isGrayButton?: boolean;
 }
 
 export const Button = ({
@@ -25,7 +25,6 @@ export const Button = ({
   isRedButton,
   isOnlyBorderButton,
   isGrayButton,
-
 }: ButtonProps) => {
   return (
     <div>
@@ -85,4 +84,3 @@ export const Button = ({
     </div>
   );
 };
-
