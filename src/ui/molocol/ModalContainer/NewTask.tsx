@@ -10,12 +10,12 @@ import { useState } from "react";
 import { FC, ReactNode } from "react";
 
 interface NewTaskProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 export const NewTask: FC<NewTaskProps> = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const handleTermsClick = () => {
+  const handleOpenModal = () => {
     setModalOpen(true);
   };
   const handleCloseModal = () => {
@@ -24,18 +24,17 @@ export const NewTask: FC<NewTaskProps> = () => {
 
   return (
     <>
-    {/* button for onclick */}
-      <OutBox
-        title="ثبت‌نام در کوئرا تسک منیجر"
-        className="w-[540px] flex flex-col justify-between"
-      >
-        <button onClick={handleTermsClick} className="flex items-center">
-          <SvgIcon name="add" className="ml-2" />
-          تسک جدید
-        </button>
-      </OutBox>
+      {/* button for onclick */}
+      <FormContainer>
+        <div className="flex">
+          <Button type="button" onclick={handleOpenModal}>
+            <SvgIcon name="add" className="ml-2" />
+            تسک جدید
+          </Button>
+        </div>
+      </FormContainer>
 
-{/* show modal */}
+      {/* show modal */}
       <OutBox
         isOpen={modalOpen}
         toggle={handleCloseModal}
@@ -45,13 +44,16 @@ export const NewTask: FC<NewTaskProps> = () => {
         <FormContainer>
           <div className="flex items-center mb-10">
             <span>در</span>
-            <div className="mx-2">
+            <div className="mx-3">
               <InputText name="title" />
             </div>
             <span>برای</span>
-            <span className="border-2 border-dotted rounded-full p-2 m-2">
-              <SvgIcon name="new-user" />
-            </span>
+            <Button
+                  type="button"
+                  className="w-[35px] h-[35px] bg-white flex items-center justify-center mr-4"
+                >
+              <SvgIcon name="new-user" isBorder={true} className="text-brand-primary" />
+            </Button>
           </div>
           <div className="mb-10">
             <TextArea
@@ -62,42 +64,55 @@ export const NewTask: FC<NewTaskProps> = () => {
             />
           </div>
           <div className="flex items-center mb-10">
-            <Text className="ml-3">افزودن پیوست</Text>
-            <InputFile
-              name="addAttachment"
-              labelText="آپلود فایل"
-              iconName="link"
-              onChange={() => {}}
-            />
+            <Text className="ml-5">افزودن پیوست</Text>
+            <div>
+              <InputFile
+                name="addAttachment"
+                labelText="آپلود فایل"
+                iconName="link"
+                onChange={() => {}}
+              />
+            </div>
           </div>
           <div className="flex items-center mb-10">
-            <Text>افزودن کاور</Text>
-            <InputFile
-              name="addCover"
-              labelText="آپلود فایل"
-              iconName="link"
-              onChange={() => {}}
-            />
+            <Text className="ml-5">افزودن کاور</Text>
+            <div>
+              <InputFile
+                name="addCover"
+                labelText="آپلود فایل"
+                iconName="link"
+                onChange={() => {}}
+              />
+            </div>
           </div>
           <div className="flex items-center">
             <ul className="flex mx-3 items-center flex-1">
-              <li>
-                <span className="w-[50px] h-[50px] flex items-center justify-center border-2 rounded-full border-dotted p-2 m-2">
-                  <SvgIcon name="flag" />
-                </span>
+              <li className="mx-4">
+                <Button
+                  type="button"
+                  className="w-[50px] h-[50px] bg-white flex items-center justify-center"
+                >
+                  <SvgIcon name="flag" isBorder={true} width="30" height="30" className="text-brand-primary" />
+                </Button>
               </li>
-              <li>
-                <span className="w-[50px] h-[50px] flex items-center justify-center border-2 rounded-full border-dotted p-2 m-2">
-                  <SvgIcon name="calendar" />
-                </span>
+              <li className="mx-4">
+                <Button
+                  type="button"
+                  className="w-[50px] h-[50px] bg-white flex items-center justify-center"
+                >
+                  <SvgIcon name="calendar" isBorder={true} width="30" height="30" className="text-brand-primary" />
+                </Button>
               </li>
-              <li>
-                <span className="w-[50px] h-[50px] flex items-center justify-center border-2 rounded-full border-dotted p-2 m-2">
-                  <SvgIcon name="label" />
-                </span>
+              <li className="mx-4">
+                <Button
+                  type="button"
+                  className="w-[50px] h-[50px] bg-white flex items-center justify-center"
+                >
+                  <SvgIcon name="label" isBorder={true} width="30" height="30" className="text-brand-primary" />
+                </Button>
               </li>
             </ul>
-            <Button type="submit" isBold isprimary className="mr-auto px-10">
+            <Button type="submit" isBold className="mr-auto px-10">
               ساخت تسک
             </Button>
           </div>
