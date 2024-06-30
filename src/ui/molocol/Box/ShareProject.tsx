@@ -20,7 +20,7 @@ export const ShareProject: FC<ShareProjectProps> = ({
     <>
       {isOpen && (
         <div
-          className={`bg-white rounded-lg w-[470px] text-center absolute  ${className}`}
+          className={`bg-white rounded-lg w-[470px] text-center absolute  ${className} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
         >
           <div className="mt-2 flex flex-row items-center justify-center relative">
             <SvgIcon
