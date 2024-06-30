@@ -11,12 +11,13 @@ interface ButtonProps {
   iconName?: string;
   isRedButton?: boolean;
   isOnlyBorderButton?: boolean;
-  isGrayButton?:boolean;
+  isGrayButton?: boolean;
+  onclick?:()=>void;
 }
 
 export const Button = ({
   type,
-  className,
+  className="",
   children,
   isBold,
   iconName,
@@ -25,11 +26,12 @@ export const Button = ({
   isRedButton,
   isOnlyBorderButton,
   isGrayButton,
-
+  onclick,
 }: ButtonProps) => {
   return (
     <div>
       <button
+        onClick={onclick}
         type={type}
         className={`p-2.5 ${className}
         ${isRedButton ? "bg-red-primary" : ""}

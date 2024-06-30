@@ -7,14 +7,7 @@ import { schemaReset } from "@/validation/validationSchema";
 function ResetPage() {
   return (
     <>
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: " 50%",
-          transform: "translate(-50%, -50%)",
-        }}
-      >
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <FormContainer onSubmit={onsubmit} schema={schemaReset}>
           <OutBox
             className="w-[640px] p-6 gap-8 flex flex-col ju"
