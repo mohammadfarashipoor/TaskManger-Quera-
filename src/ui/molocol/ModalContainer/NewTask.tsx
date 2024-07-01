@@ -92,7 +92,7 @@ export const NewTask: FC<NewTaskProps> = () => {
                   type="button"
                   className="w-[50px] h-[50px] bg-white flex items-center justify-center"
                 >
-                  <SvgIcon name="flag" isBorder={true} width="30" height="30" className="text-brand-primary" />
+                  <SvgIcon name="flag" isBorder={true} width="30" height="30" className="text-brand-primary border-gray-secondary" />
                 </Button>
               </li>
               <li className="mx-4">
@@ -100,7 +100,7 @@ export const NewTask: FC<NewTaskProps> = () => {
                   type="button"
                   className="w-[50px] h-[50px] bg-white flex items-center justify-center"
                 >
-                  <SvgIcon name="calendar" isBorder={true} width="30" height="30" className="text-brand-primary" />
+                  <SvgIcon name="calendar" isBorder={true} width="30" height="30" className="text-brand-primary border-gray-secondary" />
                 </Button>
               </li>
               <li className="mx-4">
@@ -108,7 +108,7 @@ export const NewTask: FC<NewTaskProps> = () => {
                   type="button"
                   className="w-[50px] h-[50px] bg-white flex items-center justify-center"
                 >
-                  <SvgIcon name="label" isBorder={true} width="30" height="30" className="text-brand-primary" />
+                  <SvgIcon name="label" isBorder={true} width="30" height="30" className="text-brand-primary border-gray-secondary" />
                 </Button>
               </li>
             </ul>
