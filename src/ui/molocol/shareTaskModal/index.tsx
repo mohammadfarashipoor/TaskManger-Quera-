@@ -2,37 +2,50 @@ import { Button } from "@/ui/atom/Button";
 import InputText from "@/ui/atom/InputText";
 import SvgIcon from "@/ui/atom/SvgIcon";
 import Text from "@/ui/atom/typography/Text";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormContainer from "../FormContainer";
 import { schemaForgotPage } from "@/validation/validationSchema";
 import Avatar from "@/ui/atom/Avatar";
 import Badge from "@/ui/atom/Badge";
 import { ShareProject } from "../Box";
 import CopyToClipboard from "react-copy-to-clipboard";
+import { Permission } from "@/ui/molocol/Permission";
 
 interface ModalProps {
   children?: React.ReactNode;
   iconName?: string;
   className?: string;
   users?: any;
-  textToCopy?:any;
+  textToCopy?: any;
+  title?:any
 }
 export const ShareTaskModal = ({
   children,
   iconName,
   className,
-
+  title,
   users = ["shamim", "ali"],
 }: ModalProps) => {
   const [modal, setModal] = useState(false);
-  const toggleModal = () => {
-    setModal(!modal);
-  };
-  const [inputValue,setInputValue]=useState('check')
+  const [permission, setPermission]=useState("")
   
+    const toggleModal = () => {
+      setModal(!modal)
+    };
+     const togglePermission = (user: any) => {
+        setPermission(user);
+      if(user===permission){
+        setPermission("")
+      }
+
+      };
+
+
+  const [inputValue, setInputValue] = useState("check");
+
   return (
     <>
-      <div onClick={toggleModal}>
+      <div onClick={toggleModal} >
         <Text className={className}>
           {iconName && <SvgIcon name={iconName} />}
           {children}
@@ -40,7 +53,7 @@ export const ShareTaskModal = ({
       </div>
 
       {modal && (
-        <ShareProject isOpen toggle={toggleModal}>
+        <ShareProject isOpen toggle={toggleModal} >
           <div className="space-y-6">
             <FormContainer
               className=" flex justify-center items-center "
@@ -78,19 +91,16 @@ export const ShareTaskModal = ({
               <div className="space-y-2">
                 {users.map((user: any) => {
                   return (
-                    <div className="flex justify-between items-center ">
+                    <div
+                      className="flex justify-between items-center  "
+                      key={user}
+                    >
                       <div className="flex justify-center items-center gap-2">
                         <Avatar name={user}></Avatar>
                         {user}
                         <Badge textLabel="workSpace"></Badge>
                       </div>
-
-                      <select className="border rounded-md px-[12px] py-[3px]">
-                        <option>دسترسی کامل</option>
-                        <option> بیننده</option>
-                        <option>نویسنده</option>
-                        <Text textSize="bodyS">دسترسی کامل</Text>
-                      </select>
+                      <Permission></Permission>                      
                     </div>
                   );
                 })}
