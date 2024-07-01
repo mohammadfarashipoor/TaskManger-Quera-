@@ -27,7 +27,7 @@ const InputText: React.FC<InputTextProps> = (props) => {
   } = useFormContext();
 
   return (
-    <div className="flex flex-col items-start gap-xs py-2">
+    <div className="flex flex-col items-start gap-xs py-2 flex-1">
       {label && (
         <label className={classNameLabel} htmlFor={name}>
           <Text>{label}</Text>
@@ -40,7 +40,7 @@ const InputText: React.FC<InputTextProps> = (props) => {
           placeholder={placeholder}
           className={`p-xs self-stretch w-full ${
             inlineElement ? "rounded-r-[6px]" : "rounded-[6px]"
-          } border border-gray-400 h-xl ${classNames} `}
+          } border border-gray-400  ${classNames} `}
           {...register(name)}
         />
         {inlineElement && inlineElement}

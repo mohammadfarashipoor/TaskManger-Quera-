@@ -45,7 +45,7 @@ const ProfileLayout: FC = () => {
             width="24"
             height="24"
             //  className="mr-2  transform scaleX(-1)"
-            className="ml-2 transform  flip-horizontal"
+            className="ml-2 transform rotate-180"
           />
           بازگشت
           {/* <Text textSize="boldL" textColor="white">
