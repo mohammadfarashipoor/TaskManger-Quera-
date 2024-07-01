@@ -14,10 +14,10 @@ export const OtherBox: FC<OtherBoxProps> = ({
   return (
     <>
       <div
-        className={`bg-white rounded-lg border text-center  ${className}  `}
+        className={`bg-white rounded-lg text-center ${className}  `}
         style={{ boxShadow }}
       >
-        <div className="mt-2 flex flex-row items-center justify-center mt-4">
+        <div className=" flex flex-row items-center justify-center ">
           {children}
         </div>
       </div>

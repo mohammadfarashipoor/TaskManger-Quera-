@@ -1,5 +1,11 @@
+
+
 function ForgotPage() {
-  return <div>ForgetPage</div>;
+  return (
+    <div>
+      ForgotPage
+    </div>
+  );
 }
 
 export default ForgotPage;

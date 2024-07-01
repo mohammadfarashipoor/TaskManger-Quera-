@@ -14,7 +14,7 @@ function AuthLayout() {
       <div className="fixed w-full">
         <nav className="flex flex-row-reverse items-center justify-between mt-[60px] mx-[80px]">
           <div className="flex items-center gap-xs ">
-            <span className="text-body-m">{statusText}</span>
+            <Text textSize="bodyL">{statusText}</Text>
             <Link
               to={buttonText === "ورود" ? "/login" : "/register"}
               className="flex justify-center items-center w-[95px] h-[40px] bg-brand-primary text-white rounded-[6px] hover:cursor-pointer font-semibold text-bold-s"
@@ -27,7 +27,7 @@ function AuthLayout() {
           </Text>
         </nav>
       </div>
-      <div className="flex flex-grow items-center justify-center z-10">
+      <div className="flex flex-grow items-center justify-center ">
         <Outlet />
       </div>
     </div>
