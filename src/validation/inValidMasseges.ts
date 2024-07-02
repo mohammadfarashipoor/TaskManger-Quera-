@@ -29,3 +29,7 @@ export const inValidMsgReset = {
   password: { min: "پسورد باید دارای حداقل ۵ کارکتر باشد" },
   confirm: { min: "پسورد باید دارای حداقل ۵ کارکتر باشد" },
 };
+
+export const inValidMsgWorkspace = {
+  workspaceName: { min: "نام ورک اسپیس باید وارد شود" },
+};

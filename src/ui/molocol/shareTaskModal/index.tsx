@@ -17,7 +17,7 @@ interface ModalProps {
   className?: string;
   users?: any;
   textToCopy?: any;
-  title?:any
+  title?: any;
 }
 export const ShareTaskModal = ({
   children,
@@ -27,11 +27,17 @@ export const ShareTaskModal = ({
   users = ["shamim", "ali"],
 }: ModalProps) => {
   const [modal, setModal] = useState(false);
-  
-    const toggleModal = () => {
-      setModal(!modal)
-    };
+  const [permission, setPermission] = useState("");
 
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+  const togglePermission = (user: any) => {
+    setPermission(user);
+    if (user === permission) {
+      setPermission("");
+    }
+  };
 
   const [inputValue, setInputValue] = useState("check");
 
@@ -45,7 +51,7 @@ export const ShareTaskModal = ({
       </div>
 
       {modal && (
-        <ShareProject isOpen toggle={toggleModal} className="w-[600px] ">
+        <ShareProject isOpen toggle={toggleModal}>
           <div className="space-y-6">
             <FormContainer
               className=" flex justify-center items-center w-[500px]"
