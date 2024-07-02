@@ -27,6 +27,7 @@ export const ShareTaskModal = ({
   users = ["shamim", "ali"],
 }: ModalProps) => {
   const [modal, setModal] = useState(false);
+
   const [permission, setPermission] = useState("");
 
   const toggleModal = () => {
