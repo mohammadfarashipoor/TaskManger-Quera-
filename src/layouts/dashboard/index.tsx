@@ -1,19 +1,22 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import Text from "@/ui/atom/typography/Text";
-import React, { FC, useState, MouseEvent } from "react";
+import { FC, useState, MouseEvent, ChangeEvent } from "react";
 import { Button } from "@/ui/atom/Button";
 import { NewWorkSpace } from "@/ui/molocol/Box";
 import ColorBox from "@/ui/atom/ColorBox";
 import SvgIcon from "@/ui/atom/SvgIcon";
 import Avatar from "@/ui/atom/Avatar";
+import { InputSearch } from "@/ui/atom/InputSearch";
+import InputText from "@/ui/atom/InputText";
 
 const DashboardLayout: FC = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedWorkspace, setSelectedWorkspace] = useState("");
+  const [workspaceName, setWorkspaceName] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const workspaces = [
+  const workspaces: { name: string; color: PaletteColorType }[] = [
     { name: "درس مدیریت پروژه", color: "#40C057" },
     { name: "کارهای شخصی", color: "#FAB005" },
     { name: "درس کامپایلر", color: "#FA5252" },
@@ -77,6 +80,10 @@ const DashboardLayout: FC = () => {
       workspace.name.includes(searchQuery)
   );
 
+  const handleWorkspaceNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setWorkspaceName(e.target.value);
+  };
+
   return (
     <div className="flex flex-row">
       <div
@@ -103,19 +110,7 @@ const DashboardLayout: FC = () => {
               </option>
             ))}
           </select>
-          <div className="relative flex items-center w-full h-[40px] bg-white rounded">
-            <SvgIcon
-              name="search"
-              className="absolute left-3 text-gray-500 cursor-pointer"
-              onClick={handleSearchClick}
-            />
-            <input
-              type="text"
-              id="search-input"
-              placeholder="جستجو کنید"
-              className="pl-10 pr-3 w-full h-full bg-transparent border-none focus:outline-none"
-            />
-          </div>
+          <InputSearch onClick={handleSearchClick} placeholder="جستجو کنید" />
           <Button
             type="button"
             iconName="add"
@@ -127,13 +122,17 @@ const DashboardLayout: FC = () => {
           {currentStep > 0 && (
             <NewWorkSpace isOpen={currentStep === 1} toggle={handleCloseModal}>
               <div className="w-full px-4">
+                {/* <InputText name="workspaceName" label="نام ورک‌اسپیس" /> */}
                 <label htmlFor="workspace" className="block text-right mt-4">
                   نام ورک‌اسپیس
                 </label>
+
                 <input
                   type="text"
                   id="workspace"
                   name="workspace"
+                  value={workspaceName}
+                  onChange={handleWorkspaceNameChange}
                   className="block w-full mt-2 p-2 border border-gray-primary rounded"
                 />
                 <Button
