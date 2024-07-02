@@ -8,12 +8,17 @@ import SvgIcon from "@/ui/atom/SvgIcon";
 import Avatar from "@/ui/atom/Avatar";
 import { InputSearch } from "@/ui/atom/InputSearch";
 import InputText from "@/ui/atom/InputText";
+import FormContainer from "@/ui/molocol/FormContainer";
+import { schemaWorkspaceName } from "@/validation/validationSchema";
+interface WorkspaceData {
+  workSpaceName: string;
+}
 
 const DashboardLayout: FC = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedWorkspace, setSelectedWorkspace] = useState("");
-  const [workspaceName, setWorkspaceName] = useState("");
+  // const [workspaceName, setWorkspaceName] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
   const workspaces: { name: string; color: PaletteColorType }[] = [
@@ -80,9 +85,13 @@ const DashboardLayout: FC = () => {
       workspace.name.includes(searchQuery)
   );
 
-  const handleWorkspaceNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setWorkspaceName(e.target.value);
+  const handleSubmit = (data: WorkspaceData) => {
+    console.log(data);
   };
+
+  // const handleWorkspaceNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //   setWorkspaceName(e.target.value);
+  // };
 
   return (
     <div className="flex flex-row">
@@ -121,9 +130,25 @@ const DashboardLayout: FC = () => {
           </Button>
           {currentStep > 0 && (
             <NewWorkSpace isOpen={currentStep === 1} toggle={handleCloseModal}>
-              <div className="w-full px-4">
-                {/* <InputText name="workspaceName" label="نام ورک‌اسپیس" /> */}
-                <label htmlFor="workspace" className="block text-right mt-4">
+              <FormContainer
+                onSubmit={handleSubmit}
+                schema={schemaWorkspaceName}
+              >
+                <div className="w-full px-4">
+                  <InputText name="workspaceName" label="نام ورک‌اسپیس" />
+                  <Button
+                    type="button"
+                    isBold
+                    className="w-full mt-8"
+                    onclick={handleContinueClick}
+                  >
+                    ادامه
+                  </Button>
+                  {renderDots()}
+                </div>
+              </FormContainer>
+              {/*  <div className="w-full px-4">
+              <label htmlFor="workspace" className="block text-right mt-4">
                   نام ورک‌اسپیس
                 </label>
 
@@ -134,8 +159,8 @@ const DashboardLayout: FC = () => {
                   value={workspaceName}
                   onChange={handleWorkspaceNameChange}
                   className="block w-full mt-2 p-2 border border-gray-primary rounded"
-                />
-                <Button
+                /> */}
+              {/* <Button
                   type="button"
                   isBold
                   className="w-full mt-8"
@@ -144,7 +169,7 @@ const DashboardLayout: FC = () => {
                   ادامه
                 </Button>
                 {renderDots()}
-              </div>
+                </div> */}
             </NewWorkSpace>
           )}
           {currentStep > 1 && (
