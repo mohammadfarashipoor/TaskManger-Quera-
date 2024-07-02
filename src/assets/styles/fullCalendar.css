@@ -1,0 +1,22 @@
+.fc .fc-toolbar {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  gap: 1rem;
+}
+.fc .fc-button-primary:disabled {
+  background-color: transparent;
+  border-color: transparent;
+  color: inherit;
+}
+.fc .fc-button-primary {
+  background-color: transparent;
+  border-color: transparent;
+  color: inherit;
+}
+.fc .fc-button-primary:hover {
+  background-color: transparent;
+  border-color: transparent;
+  color: inherit;
+}
