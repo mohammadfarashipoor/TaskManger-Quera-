@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
+
 import AuthLayout from "@/layouts/auth";
 import ForgotPage from "@/pages/auth/forgot";
 import ResetPage from "@/pages/auth/reset";
@@ -16,8 +17,14 @@ import ProfileSettingsPage from "@/pages/profile/profileSettings";
 import WorkSpacePage from "@/pages/dashboard/workSpace";
 import DashboardViewLayout from "@/layouts/dashboardView";
 import PrivateWrapper from "@/routes/Private";
-
+import { useEffect } from "react";
+import routerHook from "./utils/navigation";
 function App() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    routerHook(navigate);
+  }, []);
+
   return (
     <>
       <Routes>

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import authService from "./service";
+import routerHook from "@/utils/navigation";
 
 type initialStateType = {
   data: any;
@@ -125,6 +126,7 @@ const authSlice = createSlice({
         state.message = "با موفقیت وارد شدید";
       })
       .addCase(login.rejected, (state, action) => {
+        routerHook()("/");
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
