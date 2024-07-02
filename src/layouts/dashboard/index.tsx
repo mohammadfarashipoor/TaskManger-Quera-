@@ -1,9 +1,53 @@
-import { Outlet } from "react-router-dom";
+import Avatar from "@/ui/atom/Avatar";
+import { Button } from "@/ui/atom/Button";
+import InputSearch from "@/ui/atom/InputSearch";
+import SvgIcon from "@/ui/atom/SvgIcon";
+import WorkspaceItem from "@/ui/atom/WorkspaceItem";
+import Text from "@/ui/atom/typography/Text";
+import { Link, Outlet } from "react-router-dom";
 
 function DashboardLayout() {
   return (
-    <div>
-      DashboardLayout
+    <div className="flex">
+      <div className="flex flex-col items-start justify-between p-[22px] border-l-2 w-[340px] h-[100vh]">
+        <div className="flex flex-col gap-s w-full">
+          <Text textSize="headingXS" textColor="gradient">
+            کوئرا تسک منیجر
+          </Text>
+          <div className="flex items-center justify-between self-stretch">
+            <span>ورک‌اسپیس‌ها</span>
+            <SvgIcon name="arrow-bottom" />
+          </div>
+          <InputSearch
+            name="search"
+            placeholder="جست و جو کنید"
+            onChange={() => console.log("")}
+          />
+
+          <Button type="button" iconName="plus" isGrayButton>
+            ساخت ورک‌اسپیس‌ جدید
+          </Button>
+          <WorkspaceItem workspace={{ name: "اولین ", projects: ["سلام"] }} />
+        </div>
+        <div className="pb-[40px] self-stretch">
+          <Link
+            to="/profile"
+            className="flex gap-3 items-center mb-6 cursor-pointer"
+          >
+            <Avatar />
+            <span>{`محمد`}</span>
+          </Link>
+          <div className="flex items-center justify-between pl-[20px]">
+            <span className="flex items-center gap-1 cursor-pointer">
+              <SvgIcon name="logout" width="30" height="30" />
+              <span className="text-gray-primary">خروج</span>
+            </span>
+            <span>
+              <SvgIcon name="sun" width="30" height="30" />
+            </span>
+          </div>
+        </div>
+      </div>
       <Outlet />
     </div>
   );
