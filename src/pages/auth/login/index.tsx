@@ -1,3 +1,5 @@
+import { login } from "@/containers/auth/action";
+import { useAppDispatch } from "@/lib/hook";
 import { Button } from "@/ui/atom/Button";
 import InputText from "@/ui/atom/InputText";
 import Text from "@/ui/atom/typography/Text";
@@ -5,15 +7,17 @@ import { OutBox } from "@/ui/molocol/Box";
 import FormContainer from "@/ui/molocol/FormContainer";
 import { schemaLogin } from "@/validation/validationSchema";
 import { Link } from "react-router-dom";
+
 interface LoginData {
   username: string;
   password: string;
 }
 
 function LoginPage() {
-
-  const onSubmit = (data:LoginData) => {
-    console.log("data" , data);
+  const dispatch = useAppDispatch();
+  const onSubmit = (data: LoginData) => {
+    const { username, password } = data;
+    dispatch(login({ username, password }));
   };
 
   return (
