@@ -27,14 +27,8 @@ export const ShareTaskModal = ({
   users = ["shamim", "ali"],
 }: ModalProps) => {
   const [modal, setModal] = useState(false);
-<<<<<<< HEAD
+
   const [permission, setPermission] = useState("");
-=======
-  
-    const toggleModal = () => {
-      setModal(!modal)
-    };
->>>>>>> d954e6decb0231502bbaced8772716de92c34815
 
   const toggleModal = () => {
     setModal(!modal);
@@ -58,11 +52,7 @@ export const ShareTaskModal = ({
       </div>
 
       {modal && (
-<<<<<<< HEAD
         <ShareProject isOpen toggle={toggleModal}>
-=======
-        <ShareProject isOpen toggle={toggleModal} className="w-[600px] ">
->>>>>>> d954e6decb0231502bbaced8772716de92c34815
           <div className="space-y-6">
             <FormContainer
               className=" flex justify-center items-center w-[500px]"
