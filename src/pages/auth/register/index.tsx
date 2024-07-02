@@ -5,17 +5,23 @@ import { OutBox } from "@/ui/molocol/Box";
 import FormContainer from "@/ui/molocol/FormContainer";
 import { schemaRegister } from "@/validation/validationSchema";
 import { Button } from "@/ui/atom/Button";
+import { register } from "@/containers/auth/action";
+import { useAppDispatch } from "@/lib/hook";
 
 interface RegisterData {
   userName: string;
   email: string;
   password: string;
-  ceckbox: boolean;
+  username: string;
+  checkbox: boolean;
 }
 
 function RegisterPage() {
+  const dispatch = useAppDispatch();
+
   const handleSubmit = (data: RegisterData) => {
-    console.log("data", data);
+    const { username, password, email } = data;
+    dispatch(register({ username, password, email }));
   };
 
   const [modalOpen, setModalOpen] = useState(false);

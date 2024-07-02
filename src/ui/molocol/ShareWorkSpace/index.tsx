@@ -2,7 +2,7 @@ import { Button } from "@/ui/atom/Button";
 import InputText from "@/ui/atom/InputText";
 import SvgIcon from "@/ui/atom/SvgIcon";
 import Text from "@/ui/atom/typography/Text";
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import FormContainer from "../FormContainer";
 import { schemaForgotPage } from "@/validation/validationSchema";
 import Avatar from "@/ui/atom/Avatar";
@@ -10,8 +10,9 @@ import Badge from "@/ui/atom/Badge";
 import { ShareProject } from "../Box";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { Permission } from "@/ui/molocol/Permission";
+import { Projects } from "../Projects";
 
-interface ModalProps {
+interface ShareWorkSpaceProps {
   children?: React.ReactNode;
   iconName?: string;
   className?: string;
@@ -19,31 +20,16 @@ interface ModalProps {
   textToCopy?: any;
   title?: any;
 }
-export const ShareTaskModal = ({
+export const ShareWorkSpace = ({
   children,
   iconName,
   className,
-  title,
   users = ["shamim", "ali"],
-}: ModalProps) => {
+}: ShareWorkSpaceProps) => {
   const [modal, setModal] = useState(false);
-<<<<<<< HEAD
-  const [permission, setPermission] = useState("");
-=======
-  
-    const toggleModal = () => {
-      setModal(!modal)
-    };
->>>>>>> d954e6decb0231502bbaced8772716de92c34815
 
   const toggleModal = () => {
     setModal(!modal);
-  };
-  const togglePermission = (user: any) => {
-    setPermission(user);
-    if (user === permission) {
-      setPermission("");
-    }
   };
 
   const [inputValue, setInputValue] = useState("check");
@@ -58,11 +44,7 @@ export const ShareTaskModal = ({
       </div>
 
       {modal && (
-<<<<<<< HEAD
-        <ShareProject isOpen toggle={toggleModal}>
-=======
-        <ShareProject isOpen toggle={toggleModal} className="w-[600px] ">
->>>>>>> d954e6decb0231502bbaced8772716de92c34815
+        <ShareProject isOpen toggle={toggleModal} className="w-[600px]">
           <div className="space-y-6">
             <FormContainer
               className=" flex justify-center items-center w-[500px]"
@@ -110,7 +92,10 @@ export const ShareTaskModal = ({
                         {user}
                         <Badge textLabel="workSpace"></Badge>
                       </div>
-                      <Permission></Permission>
+                      <div className="flex gap-2">
+                        <Permission></Permission>
+                        <Projects></Projects>
+                      </div>
                     </div>
                   );
                 })}
@@ -122,3 +107,4 @@ export const ShareTaskModal = ({
     </>
   );
 };
+

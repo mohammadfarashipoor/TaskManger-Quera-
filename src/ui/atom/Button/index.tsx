@@ -40,7 +40,7 @@ export const Button = ({
             ? "bg-white border-2 border-brand-primary"
             : "bg-brand-primary"
         }
-        ${isGrayButton ? "bg-gray-primary" : ""}
+        ${isGrayButton ? "bg-[#D3D3D3]" : ""}
         ${
           isLeftRounded
             ? "rounded-l-md w-[91px]"
