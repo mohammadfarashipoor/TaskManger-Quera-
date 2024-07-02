@@ -22,7 +22,7 @@ export const ColorInformation: FC<ColorInformationProps> = ({
     <>
       {isOpen && (
         <div
-          className={`bg-white rounded-lg w-[501px]  justify-center  items-center`}
+          className={`bg-white rounded-lg w-[501px]  justify-center  items-center p-3`}
           style={{ height }}
         >
           <div className="text-center mt-4 flex justify-between items-center">

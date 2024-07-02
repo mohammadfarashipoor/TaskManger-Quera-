@@ -12,12 +12,12 @@ interface ButtonProps {
   isRedButton?: boolean;
   isOnlyBorderButton?: boolean;
   isGrayButton?: boolean;
-  onclick?:()=>void;
+  onclick?: () => void;
 }
 
 export const Button = ({
   type,
-  className="",
+  className = "",
   children,
   isBold,
   iconName,
@@ -87,4 +87,3 @@ export const Button = ({
     </div>
   );
 };
-

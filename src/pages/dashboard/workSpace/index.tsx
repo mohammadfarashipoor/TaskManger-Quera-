@@ -1,5 +1,9 @@
+import { WorkSpaceMain } from "@/ui/molocol/WorkspaceMain";
+
 function WorkSpacePage() {
-  return <div>WorkSpacePage</div>;
+  return <div>
+    <WorkSpaceMain/>
+  </div>;
 }
 
 export default WorkSpacePage;

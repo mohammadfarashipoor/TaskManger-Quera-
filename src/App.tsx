@@ -17,32 +17,32 @@ import WorkSpacePage from "@/pages/dashboard/workSpace";
 import DashboardViewLayout from "@/layouts/dashboardView";
 
 function App() {
-	return (
-		<>
-			<Routes>
-				<Route element={<DashboardLayout />}>
-					<Route path="/" element={<WorkSpacePage />} />
-					<Route element={<DashboardViewLayout />}>
-						<Route path="/view/column" element={<TaskColumnViewPage />} />
-						<Route path="/view/calendar" element={<CalendarViewPage />} />
-						<Route path="/view/list" element={<TaskListViewPage />} />
-					</Route>
-				</Route>
-				<Route element={<ProfileLayout />}>
-					<Route path="/personalinfo" element={<PersonalInfoPage />} />
-					<Route path="/accountinfo" element={<AccountInfoPage />} />
-					<Route path="/settings" element={<ProfileSettingsPage />} />
-				</Route>
-				<Route element={<AuthLayout />}>
-					<Route path="/login" element={<LoginPage />} />
-					<Route path="/register" element={<RegisterPage />} />
-					<Route path="/reset" element={<ResetPage />} />
-					<Route path="/forgot" element={<ForgotPage />} />
-				</Route>
-				<Route path="*" element={<NotFoundPage />} />
-			</Routes>
-		</>
-	);
+  return (
+    <>
+      <Routes>
+        <Route element={<DashboardLayout />}>
+          <Route path="/" element={<WorkSpacePage />} />
+          <Route element={<DashboardViewLayout />}>
+            <Route path="/view/column" element={<TaskColumnViewPage />} />
+            <Route path="/view/calendar" element={<CalendarViewPage />} />
+            <Route path="/view/list" element={<TaskListViewPage />} />
+          </Route>
+        </Route>
+        <Route element={<ProfileLayout />}>
+          <Route path="/personalinfo" element={<PersonalInfoPage />} />
+          <Route path="/accountinfo" element={<AccountInfoPage />} />
+          <Route path="/settings" element={<ProfileSettingsPage />} />
+        </Route>
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/reset" element={<ResetPage />} />
+          <Route path="/forgot" element={<ForgotPage />} />
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
