@@ -6,6 +6,7 @@ interface ColorInformationProps {
   children: ReactNode;
   toggle: () => void;
   isOpen: boolean;
+  isBackIcon?: boolean;
   title: string;
   height: string;
 }
@@ -16,13 +17,14 @@ export const ColorInformation: FC<ColorInformationProps> = ({
   isOpen,
   title,
   height,
+  isBackIcon = true,
 }) => {
   if (isOpen === false) return null;
   return (
     <>
       {isOpen && (
         <div
-          className={`bg-white rounded-lg w-[501px]  justify-center  items-center`}
+          className={`bg-white p-3 rounded-lg w-[501px]  justify-center  items-center`}
           style={{ height }}
         >
           <div className="text-center mt-4 flex justify-between items-center">
@@ -34,13 +36,17 @@ export const ColorInformation: FC<ColorInformationProps> = ({
               onClick={toggle}
             />
             <Text textSize="headingS">{title}</Text>
-            <SvgIcon
-              name="arrow-side"
-              width="24"
-              height="24"
-              className="top-4 left-4 ml-4 cursor-pointer"
-              onClick={toggle}
-            />
+            <span className="w-[24px] h-[24px]">
+              {isBackIcon && (
+                <SvgIcon
+                  name="arrow-side"
+                  width="24"
+                  height="24"
+                  className="top-4 left-4 ml-4 cursor-pointer"
+                  onClick={toggle}
+                />
+              )}
+            </span>
           </div>
           <div className="flex flex-col justify-center items-center px-4 py-2 mt-4">
             {children}
