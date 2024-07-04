@@ -24,7 +24,12 @@ function DashboardLayout() {
             onChange={() => console.log("")}
           />
 
-          <Button type="button" iconName="plus" isGrayButton>
+          <Button
+            className="whitespace-nowrap"
+            type="button"
+            iconName="add"
+            isGrayButton
+          >
             ساخت ورک‌اسپیس‌ جدید
           </Button>
           <WorkspaceItem workspace={{ name: "اولین ", projects: ["سلام"] }} />
@@ -48,7 +53,7 @@ function DashboardLayout() {
           </div>
         </div>
       </div>
-      <div className="w-full p-3">
+      <div className="p-3 w-[80vw] h-[100vh]">
         <Outlet />
       </div>
     </div>
