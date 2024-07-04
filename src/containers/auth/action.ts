@@ -120,13 +120,14 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(login.fulfilled, (state, action) => {
+        routerHook()("/");
+
         state.isLoading = false;
         state.isError = false;
         state.data = action.payload.data;
         state.message = "با موفقیت وارد شدید";
       })
       .addCase(login.rejected, (state, action) => {
-        routerHook()("/");
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
