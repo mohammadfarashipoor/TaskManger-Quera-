@@ -48,7 +48,9 @@ function DashboardLayout() {
           </div>
         </div>
       </div>
-      <Outlet />
+      <div className="w-full p-3">
+        <Outlet />
+      </div>
     </div>
   );
 }

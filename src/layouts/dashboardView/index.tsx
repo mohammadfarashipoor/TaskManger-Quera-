@@ -1,9 +1,10 @@
+import OptionsDashboard from "@/ui/organism/OptionsDashboard";
 import { Outlet } from "react-router-dom";
 
 function DashboardViewLayout() {
   return (
     <div>
-      DashboardViewLayout
+      <OptionsDashboard />
       <Outlet />
     </div>
   );
