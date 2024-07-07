@@ -99,6 +99,7 @@ const authSlice = createSlice({
 
     // Logout
     logOut: (state) => {
+      routerHook()("/login");
       state.data = {};
     },
   },
@@ -113,6 +114,7 @@ const authSlice = createSlice({
         state.isError = false;
         state.data = action.payload;
         state.message = "با موفقیت ثبت نام شدید";
+        routerHook()("/login");
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;
