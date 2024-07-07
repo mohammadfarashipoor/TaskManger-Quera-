@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import authService from "./service";
+import routerHook from "@/utils/navigation";
 
 type initialStateType = {
   data: any;
@@ -119,6 +120,8 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(login.fulfilled, (state, action) => {
+        routerHook()("/");
+
         state.isLoading = false;
         state.isError = false;
         state.data = action.payload.data;

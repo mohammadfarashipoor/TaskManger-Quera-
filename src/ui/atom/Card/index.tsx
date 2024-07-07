@@ -10,7 +10,7 @@ interface CardProps {
 export const Card = ({ className = "", children }: CardProps) => {
   return (
     <div className="flex">
-      <div className={`rounded-[16px] shadow px-[50px] py-5 ${className}`}>
+      <div className={`rounded-[16px] shadow px-10 py-5 ${className}`}>
         <Text className="text-white">{children}</Text>
       </div>
     </div>
