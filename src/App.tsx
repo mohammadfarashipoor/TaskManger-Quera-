@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
+
 import AuthLayout from "@/layouts/auth";
 import ForgotPage from "@/pages/auth/forgot";
 import ResetPage from "@/pages/auth/reset";
@@ -15,23 +16,32 @@ import AccountInfoPage from "@/pages/profile/accountInfo";
 import ProfileSettingsPage from "@/pages/profile/profileSettings";
 import WorkSpacePage from "@/pages/dashboard/workSpace";
 import DashboardViewLayout from "@/layouts/dashboardView";
-
+import PrivateWrapper from "@/routes/Private";
+import { useEffect } from "react";
+import routerHook from "./utils/navigation";
 function App() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    routerHook(navigate);
+  }, []);
+
   return (
     <>
       <Routes>
-        <Route element={<DashboardLayout />}>
-          <Route path="/" element={<WorkSpacePage />} />
-          <Route element={<DashboardViewLayout />}>
-            <Route path="/view/column" element={<TaskColumnViewPage />} />
-            <Route path="/view/calendar" element={<CalendarViewPage />} />
-            <Route path="/view/list" element={<TaskListViewPage />} />
+        <Route element={<PrivateWrapper />}>
+          <Route element={<DashboardLayout />}>
+            <Route path="/" element={<WorkSpacePage />} />
+            <Route element={<DashboardViewLayout />}>
+              <Route path="/view/column" element={<TaskColumnViewPage />} />
+              <Route path="/view/calendar" element={<CalendarViewPage />} />
+              <Route path="/view/list" element={<TaskListViewPage />} />
+            </Route>
           </Route>
-        </Route>
-        <Route element={<ProfileLayout />}>
-          <Route path="/personalinfo" element={<PersonalInfoPage />} />
-          <Route path="/accountinfo" element={<AccountInfoPage />} />
-          <Route path="/settings" element={<ProfileSettingsPage />} />
+          <Route element={<ProfileLayout />}>
+            <Route path="/personalinfo" element={<PersonalInfoPage />} />
+            <Route path="/accountinfo" element={<AccountInfoPage />} />
+            <Route path="/settings" element={<ProfileSettingsPage />} />
+          </Route>
         </Route>
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<LoginPage />} />

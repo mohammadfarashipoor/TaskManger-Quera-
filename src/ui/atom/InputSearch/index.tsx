@@ -1,30 +1,28 @@
-import { FC } from "react";
 import SvgIcon from "../SvgIcon";
 
 interface InputSearchProps {
-  placeholder: string;
-  className?: string;
-  onClick: () => void;
+  name: string;
+  classNames?: string;
+  placeholder?: string;
+  onChange: any;
 }
 
-export const InputSearch: FC<InputSearchProps> = ({
-  placeholder,
-  className,
-  onClick,
-}) => {
+const InputSearch: React.FC<InputSearchProps> = (props) => {
+  const { name, classNames, placeholder = "", onChange } = props;
   return (
-    <div className="relative flex items-center w-full h-[40px] bg-white rounded">
-      <SvgIcon
-        name="search"
-        className="absolute left-3 text-gray-500 cursor-pointer"
-        onClick={onClick}
-      />
+    <div
+      className={`flex flex-row-reverse w-full px-2 relative justify-center items-center border border-gray-400 rounded-[6px]  ${classNames}`}
+    >
       <input
-        type="text"
-        id="search-input"
+        id={name}
+        type={"search"}
         placeholder={placeholder}
-        className={`pl-10 pr-3 w-full h-full bg-transparent border-none focus:outline-none ${className}`}
+        onChange={(e) => onChange(e.target.value)}
+        className={`p-xs w-full outline-none `}
       />
+      <SvgIcon name="search" width="30" height="30" />
     </div>
   );
 };
+
+export default InputSearch;
