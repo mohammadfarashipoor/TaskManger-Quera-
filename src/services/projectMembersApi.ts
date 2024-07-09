@@ -1,8 +1,8 @@
 import Axios from "@/utils/axios";
 
 const getAllProjectMembersApi = async (
-  projectId: string,
-  workspaceId: string
+  projectId: projectIdType,
+  workspaceId: workspaceIdType
 ) => {
   const res = await Axios.get(
     `/workspaces/${workspaceId}/projects/${projectId}/members/`
@@ -10,8 +10,8 @@ const getAllProjectMembersApi = async (
   return res.data;
 };
 const getProjectMemberApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   memberId: string
 ) => {
   const res = await Axios.get(
@@ -20,8 +20,8 @@ const getProjectMemberApi = async (
   return res.data;
 };
 const createProjectMemberApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   body: {
     user: string;
   }
@@ -33,8 +33,8 @@ const createProjectMemberApi = async (
   return res.data;
 };
 const updateProjectMemberApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   memberId: string,
   body: userTaskBody
 ) => {
@@ -45,8 +45,8 @@ const updateProjectMemberApi = async (
   return res.data;
 };
 const deleteProjectMemberApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   memberId: string
 ) => {
   const res = await Axios.delete(

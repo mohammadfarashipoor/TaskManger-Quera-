@@ -1,20 +1,18 @@
 import Axios from "@/utils/axios";
 
-const getAllBoardsApi = async (projectId: string, workspaceId: string) => {
+const getAllBoardsApi = async (
+  projectId: projectIdType,
+  workspaceId: workspaceIdType
+) => {
   const res = await Axios.get(
     `/workspaces/${workspaceId}/projects/${projectId}/boards/`
   );
   return res.data;
 };
 const createBoardApi = async (
-  projectId: string,
-  workspaceId: string,
-  body: {
-    name: string;
-    order: number;
-    is_archive: boolean;
-    color: string;
-  }
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
+  body: boardBody
 ) => {
   const res = await Axios.post(
     `/workspaces/${workspaceId}/projects/${projectId}/boards/`,
@@ -24,8 +22,8 @@ const createBoardApi = async (
 };
 const getBoardApi = async (
   id: string,
-  projectId: string,
-  workspaceId: string
+  projectId: projectIdType,
+  workspaceId: workspaceIdType
 ) => {
   const res = await Axios.get(
     `/workspaces/${workspaceId}/projects/${projectId}/boards/${id}/`
@@ -34,14 +32,9 @@ const getBoardApi = async (
 };
 const changeBoardApi = async (
   id: string,
-  projectId: string,
-  workspaceId: string,
-  body: {
-    name: string;
-    order: number;
-    is_archive: boolean;
-    color: string;
-  }
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
+  body: boardBody
 ) => {
   const res = await Axios.patch(
     `/workspaces/${workspaceId}/projects/${projectId}/boards/${id}/`,
@@ -52,8 +45,8 @@ const changeBoardApi = async (
 
 const deleteBoardApi = async (
   id: string,
-  projectId: string,
-  workspaceId: string
+  projectId: projectIdType,
+  workspaceId: workspaceIdType
 ) => {
   const res = await Axios.delete(
     `/workspaces/${workspaceId}/projects/${projectId}/boards/${id}/`

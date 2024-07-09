@@ -5,8 +5,8 @@ const getAllWorkspacesApi = async () => {
   return res.data;
 };
 
-const getWorkspacesByIdApi = async (wsId: string) => {
-  const res = await Axios.get(`/workspace/${wsId}`);
+const getWorkspacesByIdApi = async (workspaceId: workspaceIdType) => {
+  const res = await Axios.get(`/workspace/${workspaceId}`);
   return res.data;
 };
 
@@ -26,13 +26,16 @@ const updateWorkspaceApi = async (
   return res.data;
 };
 
-const addMemberToWorkspaceApi = async (username: string, wsId: string) => {
-  const res = await Axios.put(`/workspace/${wsId}/members/${username}/`);
+const addMemberToWorkspaceApi = async (
+  username: string,
+  workspaceId: workspaceIdType
+) => {
+  const res = await Axios.put(`/workspace/${workspaceId}/members/${username}/`);
   return res.data;
 };
 
-const deleteWorkspaceApi = async (wsId: string) => {
-  const res = await Axios.delete(`/workspace/${wsId}/`);
+const deleteWorkspaceApi = async (workspaceId: workspaceIdType) => {
+  const res = await Axios.delete(`/workspace/${workspaceId}/`);
   return res.data;
 };
 

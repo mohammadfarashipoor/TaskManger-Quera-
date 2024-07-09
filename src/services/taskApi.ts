@@ -1,8 +1,8 @@
 import Axios from "@/utils/axios";
 
 const changeTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   body: createTaskBody
@@ -13,8 +13,8 @@ const changeTaskApi = async (
   );
 };
 const createTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   body: createTaskBody
 ) => {
@@ -24,8 +24,8 @@ const createTaskApi = async (
   );
 };
 const deleteTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string
 ) => {
@@ -34,8 +34,8 @@ const deleteTaskApi = async (
   );
 };
 const getAllTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string
 ) => {
   return Axios.get(
@@ -43,8 +43,8 @@ const getAllTaskApi = async (
   );
 };
 const getTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string
 ) => {
@@ -53,8 +53,8 @@ const getTaskApi = async (
   );
 };
 const getAllAssignTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string
 ) => {
@@ -63,8 +63,8 @@ const getAllAssignTaskApi = async (
   );
 };
 const getAssignTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   assigneeId: string
@@ -74,8 +74,8 @@ const getAssignTaskApi = async (
   );
 };
 const unassignTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   body: {
@@ -88,8 +88,8 @@ const unassignTaskApi = async (
   );
 };
 const assignTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   assigneeId: string,
@@ -101,8 +101,8 @@ const assignTaskApi = async (
   );
 };
 const deleteAssignTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   assigneeId: string
@@ -113,8 +113,8 @@ const deleteAssignTaskApi = async (
 };
 
 const getAllTasksLogApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string
 ) => {
@@ -124,8 +124,8 @@ const getAllTasksLogApi = async (
   return res.data;
 };
 const getTaskLogApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   taskLogId: string

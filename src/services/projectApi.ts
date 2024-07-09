@@ -1,31 +1,37 @@
 import Axios from "@/utils/axios";
 
-const getProjectByIdApi = async (projectId: string, workspaceId: string) => {
+const getProjectByIdApi = async (
+  projectId: projectIdType,
+  workspaceId: workspaceIdType
+) => {
   const res = await Axios.get(
     `/workspaces/${workspaceId}/projects/${projectId}/`
   );
   return res.data;
 };
-const getAllProjectsByIdApi = async (workspaceId: string) => {
+const getAllProjectsByIdApi = async (workspaceId: workspaceIdType) => {
   const res = await Axios.get(`/workspaces/${workspaceId}/projects/`);
   return res.data;
 };
 const createProjectApi = async (
-  workspaceId: string,
+  workspaceId: workspaceIdType,
   body: { name: string }
 ) => {
   const res = await Axios.post(`/workspaces/${workspaceId}/projects/`, body);
   return res.data;
 };
-const deleteProjectApi = async (projectId: string, workspaceId: string) => {
+const deleteProjectApi = async (
+  projectId: projectIdType,
+  workspaceId: workspaceIdType
+) => {
   const res = await Axios.delete(
     `/workspaces/${workspaceId}/projects/${projectId}/`
   );
   return res.data;
 };
 const updateProjectApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   body: { name: string }
 ) => {
   const res = await Axios.put(

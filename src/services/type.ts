@@ -1,3 +1,5 @@
+type projectIdType = string;
+type workspaceIdType = string;
 type createTaskBody = {
   name: string;
   description: string;
@@ -20,4 +22,10 @@ type createCommentBody = {
   author: number;
   attachment: string;
   text: string;
+};
+type boardBody = {
+  name: string;
+  order: number;
+  is_archive: boolean;
+  color: string;
 };

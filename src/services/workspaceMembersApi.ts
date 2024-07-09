@@ -2,12 +2,12 @@ import Axios from "@/utils/axios";
 interface workspaceMembers extends userTaskBody {
   is_super_access: boolean;
 }
-const getAllWorkspacetMembersApi = async (workspaceId: string) => {
+const getAllWorkspacetMembersApi = async (workspaceId: workspaceIdType) => {
   const res = await Axios.get(`/workspaces/${workspaceId}/members/`);
   return res.data;
 };
 const getWorkspacetMemberApi = async (
-  workspaceId: string,
+  workspaceId: workspaceIdType,
   memberId: string
 ) => {
   const res = await Axios.get(
@@ -16,7 +16,7 @@ const getWorkspacetMemberApi = async (
   return res.data;
 };
 const createWorkspacetMemberApi = async (
-  workspaceId: string,
+  workspaceId: workspaceIdType,
   body: {
     user: string;
     is_super_access: boolean;
@@ -26,7 +26,7 @@ const createWorkspacetMemberApi = async (
   return res.data;
 };
 const updateWorkspacetMemberApi = async (
-  workspaceId: string,
+  workspaceId: workspaceIdType,
   memberId: string,
   body: workspaceMembers
 ) => {
@@ -37,7 +37,7 @@ const updateWorkspacetMemberApi = async (
   return res.data;
 };
 const deleteWorkspacetMemberApi = async (
-  workspaceId: string,
+  workspaceId: workspaceIdType,
   memberId: string
 ) => {
   const res = await Axios.delete(

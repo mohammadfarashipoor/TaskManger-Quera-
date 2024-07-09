@@ -1,8 +1,8 @@
 import Axios from "@/utils/axios";
 
 const getAllCommentsApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string
 ) => {
@@ -12,8 +12,8 @@ const getAllCommentsApi = async (
   return res.data;
 };
 const createCommentApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   body: createCommentBody
@@ -25,8 +25,8 @@ const createCommentApi = async (
   return res.data;
 };
 const getCommentApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   CommentId: string
@@ -37,8 +37,8 @@ const getCommentApi = async (
   return res.data;
 };
 const updadteCommentApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   CommentId: string,
@@ -52,8 +52,8 @@ const updadteCommentApi = async (
 };
 
 const deleteCommentApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   CommentId: string
