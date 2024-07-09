@@ -1,7 +1,7 @@
 import Axios from "@/utils/axios";
 
 const loginApi = async (body: { username: string; password: string }) => {
-  const res = await Axios.post("/accounts/login", body);
+  const res = await Axios.post("/accounts/login/", body);
   return res.data;
 };
 
@@ -10,12 +10,12 @@ const registerApi = async (body: {
   email: string;
   password: string;
 }) => {
-  const res = await Axios.post("/accounts", body);
+  const res = await Axios.post("/accounts/", body);
   return res.data;
 };
 
 const forgetPasswordApi = async (body: { email: string }) => {
-  const res = await Axios.post("/accounts/reset-password", body);
+  const res = await Axios.post("/accounts/reset-password/", body);
   return res.data;
 };
 const resetPasswordApi = async (body: {
@@ -27,7 +27,7 @@ const resetPasswordApi = async (body: {
 };
 
 const getAccessTokenApi = async (rToken: string) => {
-  const res = await Axios.post("/accounts/refresh", {
+  const res = await Axios.post("/accounts/refresh/", {
     refresh: rToken,
   });
   return res.data;

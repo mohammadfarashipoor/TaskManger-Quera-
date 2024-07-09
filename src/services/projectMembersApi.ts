@@ -15,7 +15,7 @@ const getProjectMemberApi = async (
   memberId: string
 ) => {
   const res = await Axios.get(
-    `/workspaces/${workspaceId}/projects/${projectId}/members/${memberId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/members/${memberId}/`
   );
   return res.data;
 };
@@ -39,7 +39,7 @@ const updateProjectMemberApi = async (
   body: userTaskBody
 ) => {
   const res = await Axios.patch(
-    `/workspaces/${workspaceId}/projects/${projectId}/members/${memberId}`,
+    `/workspaces/${workspaceId}/projects/${projectId}/members/${memberId}/`,
     body
   );
   return res.data;
@@ -50,7 +50,7 @@ const deleteProjectMemberApi = async (
   memberId: string
 ) => {
   const res = await Axios.delete(
-    `/workspaces/${workspaceId}/projects/${projectId}/members/${memberId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/members/${memberId}/`
   );
   return res.data;
 };

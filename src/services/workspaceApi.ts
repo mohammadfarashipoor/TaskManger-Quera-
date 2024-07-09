@@ -11,7 +11,7 @@ const getWorkspacesByIdApi = async (wsId: string) => {
 };
 
 const createWorkSpaceApi = async (body: { name: string; color: string }) => {
-  const res = await Axios.post(`/workspace`, body);
+  const res = await Axios.post(`/workspace/`, body);
   return res.data;
 };
 
@@ -22,17 +22,17 @@ const updateWorkspaceApi = async (
     color?: string;
   }
 ) => {
-  const res = await Axios.patch(`/workspace/${id}`, body);
+  const res = await Axios.patch(`/workspace/${id}/`, body);
   return res.data;
 };
 
 const addMemberToWorkspaceApi = async (username: string, wsId: string) => {
-  const res = await Axios.put(`/workspace/${wsId}/members/${username}`);
+  const res = await Axios.put(`/workspace/${wsId}/members/${username}/`);
   return res.data;
 };
 
 const deleteWorkspaceApi = async (wsId: string) => {
-  const res = await Axios.delete(`/workspace/${wsId}`);
+  const res = await Axios.delete(`/workspace/${wsId}/`);
   return res.data;
 };
 

@@ -8,7 +8,7 @@ const changeTaskApi = async (
   body: createTaskBody
 ) => {
   return Axios.put(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}`,
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/`,
     body
   );
 };
@@ -19,7 +19,7 @@ const createTaskApi = async (
   body: createTaskBody
 ) => {
   return Axios.post(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks`,
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/`,
     body
   );
 };
@@ -30,7 +30,7 @@ const deleteTaskApi = async (
   taskId: string
 ) => {
   return Axios.delete(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/task/${taskId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/task/${taskId}/`
   );
 };
 const getAllTaskApi = async (
@@ -49,7 +49,7 @@ const getTaskApi = async (
   taskId: string
 ) => {
   return Axios.get(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/`
   );
 };
 const getAllAssignTaskApi = async (
@@ -70,7 +70,7 @@ const getAssignTaskApi = async (
   assigneeId: string
 ) => {
   return Axios.get(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/assignee/${assigneeId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/assignee/${assigneeId}/`
   );
 };
 const unassignTaskApi = async (
@@ -96,7 +96,7 @@ const assignTaskApi = async (
   body: userTaskBody
 ) => {
   return Axios.put(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/assignee/${assigneeId}`,
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/assignee/${assigneeId}/`,
     body
   );
 };
@@ -108,7 +108,7 @@ const deleteAssignTaskApi = async (
   assigneeId: string
 ) => {
   return Axios.delete(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/assignee/${assigneeId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/assignee/${assigneeId}/`
   );
 };
 
@@ -131,7 +131,7 @@ const getTaskLogApi = async (
   taskLogId: string
 ) => {
   const res = await Axios.get(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/logs/${taskLogId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/logs/${taskLogId}/`
   );
   return res.data;
 };

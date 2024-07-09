@@ -2,7 +2,7 @@ import Axios from "@/utils/axios";
 
 const getAllBoardsApi = async (projectId: string, workspaceId: string) => {
   const res = await Axios.get(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/`
   );
   return res.data;
 };
@@ -17,7 +17,7 @@ const createBoardApi = async (
   }
 ) => {
   const res = await Axios.post(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards`,
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/`,
     body
   );
   return res.data;
@@ -28,7 +28,7 @@ const getBoardApi = async (
   workspaceId: string
 ) => {
   const res = await Axios.get(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${id}`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${id}/`
   );
   return res.data;
 };
@@ -44,7 +44,7 @@ const changeBoardApi = async (
   }
 ) => {
   const res = await Axios.patch(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${id}`,
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${id}/`,
     body
   );
   return res.data;
@@ -56,7 +56,7 @@ const deleteBoardApi = async (
   workspaceId: string
 ) => {
   const res = await Axios.delete(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${id}`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${id}/`
   );
   return res.data;
 };

@@ -7,7 +7,7 @@ const getAllCommentsApi = async (
   taskId: string
 ) => {
   const res = await Axios.get(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/comments`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/comments/`
   );
   return res.data;
 };
@@ -19,7 +19,7 @@ const createCommentApi = async (
   body: createCommentBody
 ) => {
   const res = await Axios.post(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/comments`,
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/comments/`,
     body
   );
   return res.data;
@@ -32,7 +32,7 @@ const getCommentApi = async (
   CommentId: string
 ) => {
   const res = await Axios.get(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/comments/${CommentId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/comments/${CommentId}/`
   );
   return res.data;
 };
@@ -45,7 +45,7 @@ const updadteCommentApi = async (
   body: createCommentBody
 ) => {
   const res = await Axios.patch(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/comments/${CommentId}`,
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/comments/${CommentId}/`,
     body
   );
   return res.data;
@@ -59,7 +59,7 @@ const deleteCommentApi = async (
   CommentId: string
 ) => {
   const res = await Axios.delete(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/comments/${CommentId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/comments/${CommentId}/`
   );
   return res.data;
 };

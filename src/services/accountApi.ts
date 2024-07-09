@@ -6,16 +6,16 @@ const getAllAccountsApi = async () => {
 };
 
 const getAccountApi = async (accountId: string) => {
-  const res = await Axios.get(`/account/${accountId}`);
+  const res = await Axios.get(`/account/${accountId}/`);
   return res.data;
 };
 const updadteAccountApi = async (accountId: string, body: userTaskBody) => {
-  const res = await Axios.patch(`/account/${accountId}`, body);
+  const res = await Axios.patch(`/account/${accountId}/`, body);
   return res.data;
 };
 
 const deleteAccountApi = async (accountId: string) => {
-  const res = await Axios.delete(`/account/${accountId}`);
+  const res = await Axios.delete(`/account/${accountId}/`);
   return res.data;
 };
 const getSettingApi = async () => {

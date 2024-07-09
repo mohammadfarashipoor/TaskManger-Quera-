@@ -10,7 +10,9 @@ const getWorkspacetMemberApi = async (
   workspaceId: string,
   memberId: string
 ) => {
-  const res = await Axios.get(`/workspaces/${workspaceId}/members/${memberId}`);
+  const res = await Axios.get(
+    `/workspaces/${workspaceId}/members/${memberId}/`
+  );
   return res.data;
 };
 const createWorkspacetMemberApi = async (
@@ -39,7 +41,7 @@ const deleteWorkspacetMemberApi = async (
   memberId: string
 ) => {
   const res = await Axios.delete(
-    `/workspaces/${workspaceId}/members/${memberId}`
+    `/workspaces/${workspaceId}/members/${memberId}/`
   );
   return res.data;
 };

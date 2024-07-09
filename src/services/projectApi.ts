@@ -2,7 +2,7 @@ import Axios from "@/utils/axios";
 
 const getProjectByIdApi = async (projectId: string, workspaceId: string) => {
   const res = await Axios.get(
-    `/workspaces/${workspaceId}/projects/${projectId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/`
   );
   return res.data;
 };
@@ -19,7 +19,7 @@ const createProjectApi = async (
 };
 const deleteProjectApi = async (projectId: string, workspaceId: string) => {
   const res = await Axios.delete(
-    `/workspaces/${workspaceId}/projects/${projectId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/`
   );
   return res.data;
 };
@@ -29,7 +29,7 @@ const updateProjectApi = async (
   body: { name: string }
 ) => {
   const res = await Axios.put(
-    `/workspaces/${workspaceId}/projects/${projectId}`,
+    `/workspaces/${workspaceId}/projects/${projectId}/`,
     body
   );
   return res.data;
