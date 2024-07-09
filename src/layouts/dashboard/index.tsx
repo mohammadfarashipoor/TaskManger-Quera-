@@ -5,8 +5,22 @@ import SvgIcon from "@/ui/atom/SvgIcon";
 import WorkspaceItem from "@/ui/atom/WorkspaceItem";
 import Text from "@/ui/atom/typography/Text";
 import { Link, Outlet } from "react-router-dom";
+import { getWorkspaces } from "@/containers/workspace/action";
+import { useAppDispatch } from "@/lib/hook";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/store";
 
 function DashboardLayout() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getWorkspaces());
+  }, [dispatch]);
+
+  const workspacesData = useSelector((state: RootState) => state.workspace);
+  console.log(workspacesData);
+
   return (
     <div className="flex">
       <div className="flex flex-col items-start justify-between p-[22px] border-l-2 w-[340px] h-[100vh]">
