@@ -7,7 +7,13 @@ import {
   getWorkspacesByIdApi,
   updateWorkspaceApi,
 } from "@/services/workspaceApi";
-import { getAllWorkspacetMembersApi } from "@/services/workspaceMembersApi";
+import {
+  createWorkspacetMemberApi,
+  deleteWorkspacetMemberApi,
+  getAllWorkspacetMembersApi,
+  getWorkspacetMemberApi,
+  updateWorkspacetMemberApi,
+} from "@/services/workspaceMembersApi";
 
 type initialStateType = {
   dataWorkspace: any;
@@ -16,6 +22,10 @@ type initialStateType = {
   isError: boolean;
   message: unknown;
 };
+
+interface workspaceMembers extends userTaskBody {
+  is_super_access: boolean;
+}
 
 const initialState: initialStateType = {
   dataWorkspace: {},
@@ -131,6 +141,96 @@ export const getWorkspaceMembers = createAsyncThunk(
   }
 );
 
+//createWorkspaceMember
+export const createWorkspaceMember = createAsyncThunk(
+  "Workspace/createWorkspaceMember",
+  async (
+    {
+      workspace_Id,
+      memberData,
+    }: {
+      workspace_Id: string;
+      memberData: { user: string; is_super_access: boolean };
+    },
+    thunkAPI
+  ) => {
+    try {
+      return await createWorkspacetMemberApi(workspace_Id, memberData);
+    } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        const message =
+          error?.response?.data?.user ||
+          error?.response?.data?.detail ||
+          "مشکلی به وجود آمده";
+        return thunkAPI.rejectWithValue(message);
+      }
+    }
+  }
+);
+
+//getWorkspaceMember
+export const getWorkspaceMember = createAsyncThunk(
+  "Workspace/getWorkspaceMember",
+  async (
+    { workspace_Id, memberId }: { workspace_Id: string; memberId: string },
+    thunkAPI
+  ) => {
+    try {
+      return await getWorkspacetMemberApi(workspace_Id, memberId);
+    } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        const message = error?.response?.data?.detail || "مشکلی به وجود آمده";
+        return thunkAPI.rejectWithValue(message);
+      }
+    }
+  }
+);
+
+//updateWorkspaceMember
+export const updateWorkspaceMember = createAsyncThunk(
+  "Workspace/updateWorkspaceMember",
+  async (
+    {
+      workspace_Id,
+      memberId,
+      body,
+    }: { workspace_Id: string; memberId: string; body: workspaceMembers },
+    thunkAPI
+  ) => {
+    try {
+      return await updateWorkspacetMemberApi(workspace_Id, memberId, body);
+    } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        const message =
+          error?.response?.data?.user?.username ||
+          error?.response?.data?.user?.email ||
+          error?.response?.data?.user?.thumbnail ||
+          error?.response?.data?.detail ||
+          "مشکلی به وجود آمده";
+        return thunkAPI.rejectWithValue(message);
+      }
+    }
+  }
+);
+
+//removeWorkspaceMember
+export const removeWorkspaceMember = createAsyncThunk(
+  "Workspace/removeWorkspaceMember",
+  async (
+    { workspace_Id, memberId }: { workspace_Id: string; memberId: string },
+    thunkAPI
+  ) => {
+    try {
+      return await deleteWorkspacetMemberApi(workspace_Id, memberId);
+    } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        const message = error?.response?.data?.detail || "مشکلی به وجود آمده";
+        return thunkAPI.rejectWithValue(message);
+      }
+    }
+  }
+);
+
 const workspaceSlice = createSlice({
   name: "Workspace",
   initialState,
@@ -217,6 +317,59 @@ const workspaceSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      .addCase(createWorkspaceMember.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createWorkspaceMember.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.dataWorkspaceMember = action.payload;
+      })
+      .addCase(createWorkspaceMember.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getWorkspaceMember.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getWorkspaceMember.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.dataWorkspaceMember = action.payload;
+      })
+      .addCase(getWorkspaceMember.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(updateWorkspaceMember.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateWorkspaceMember.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.dataWorkspaceMember = action.payload;
+      })
+      .addCase(updateWorkspaceMember.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(removeWorkspaceMember.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(removeWorkspaceMember.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.dataWorkspaceMember = action.payload;
+      })
+      .addCase(removeWorkspaceMember.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.message = "حذف موفقیت آمیز بود";
       });
   },
 });
