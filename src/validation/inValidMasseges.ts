@@ -27,9 +27,15 @@ export const inValidMsgPersonalInfo = {
 };
 export const inValidMsgReset = {
   password: { min: "پسورد باید دارای حداقل ۵ کارکتر باشد" },
-  confirm: { min: "پسورد باید دارای حداقل ۵ کارکتر باشد" },
+  confrim: { min: "پسورد باید دارای حداقل ۵ کارکتر باشد" },
 };
 
 export const inValidMsgWorkspace = {
   workspaceName: { min: "نام ورک اسپیس باید وارد شود" },
 };
+export const inValidMsgAccountInfo = {
+  oldPassword: { min: "پسورد باید دارای حداقل ۵ کارکتر باشد" },
+  newPassword: { min: "پسورد باید دارای حداقل ۵ کارکتر باشد" },
+  newPassword1: { min: "پسورد باید دارای حداقل ۵ کارکتر باشد" },
+};
+
