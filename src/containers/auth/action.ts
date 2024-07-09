@@ -1,7 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
-import authService from "./service";
 import routerHook from "@/utils/navigation";
+import {
+  forgetPasswordApi,
+  loginApi,
+  registerApi,
+  resetPasswordApi,
+} from "@/services/authApi";
 
 type initialStateType = {
   data: any;
@@ -22,7 +27,7 @@ export const register = createAsyncThunk(
   "Auth/register",
   async (userData: any, thunkAPI) => {
     try {
-      return await authService.register(userData);
+      return await registerApi(userData);
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
         const message =
@@ -40,7 +45,7 @@ export const login = createAsyncThunk(
   "Auth/login",
   async (userData: any, thunkAPI) => {
     try {
-      return await authService.login(userData);
+      return await loginApi(userData);
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
         const message = error?.response?.data?.detail || "مشکلی به وجود آمده";
@@ -56,7 +61,7 @@ export const forgot = createAsyncThunk(
   "Auth/forget-password",
   async (userEmail: any, thunkAPI) => {
     try {
-      return await authService.forgot(userEmail);
+      return await forgetPasswordApi(userEmail);
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
         const message = error?.response?.data?.detail || "مشکلی به وجود آمده";
@@ -71,7 +76,7 @@ export const resetPassword = createAsyncThunk(
   "Auth/reset-password",
   async (userPass: any, thunkAPI) => {
     try {
-      return await authService.reset(userPass);
+      return await resetPasswordApi(userPass);
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
         const message = error?.response?.data?.detail || "مشکلی به وجود آمده";
@@ -94,6 +99,7 @@ const authSlice = createSlice({
 
     // Logout
     logOut: (state) => {
+      routerHook()("/login");
       state.data = {};
     },
   },
@@ -108,6 +114,7 @@ const authSlice = createSlice({
         state.isError = false;
         state.data = action.payload;
         state.message = "با موفقیت ثبت نام شدید";
+        routerHook()("/login");
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;
@@ -136,7 +143,7 @@ const authSlice = createSlice({
       .addCase(forgot.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(forgot.fulfilled, (state, action) => {
+      .addCase(forgot.fulfilled, (state) => {
         state.isLoading = false;
         state.isError = false;
         state.message = "ایمیل بازیابی ارسال شد";
@@ -150,7 +157,7 @@ const authSlice = createSlice({
       .addCase(resetPassword.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(resetPassword.fulfilled, (state, action) => {
+      .addCase(resetPassword.fulfilled, (state) => {
         state.isLoading = false;
         state.isError = false;
         state.message = "رمز عبور با موفقیت تغییر کرد";
