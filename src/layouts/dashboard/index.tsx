@@ -1,5 +1,4 @@
 import { logOut } from "@/containers/auth/action";
-import { useAppDispatch } from "@/lib/hook";
 import Avatar from "@/ui/atom/Avatar";
 import { Button } from "@/ui/atom/Button";
 import InputSearch from "@/ui/atom/InputSearch";
@@ -7,9 +6,21 @@ import SvgIcon from "@/ui/atom/SvgIcon";
 import WorkspaceItem from "@/ui/atom/WorkspaceItem";
 import Text from "@/ui/atom/typography/Text";
 import { Link, Outlet } from "react-router-dom";
+import { getWorkspaces } from "@/containers/workspace/action";
+import { useAppDispatch } from "@/lib/hook";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/store";
 
 function DashboardLayout() {
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getWorkspaces());
+  }, [dispatch]);
+
+  const workspacesData = useSelector((state: RootState) => state.workspace);
+  console.log(workspacesData);
 
   return (
     <div className="flex">

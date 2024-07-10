@@ -15,6 +15,7 @@ export default function NewWorkSpaceModal() {
     { title: "انتخاب رنگ ورک اسپیس", body: <WorkSpaceColor /> },
     { title: "مرور اطلاعات", body: <WorkSpaceInfo /> },
   ];
+
   return (
     <ColorInformation
       toggle={backStep}
