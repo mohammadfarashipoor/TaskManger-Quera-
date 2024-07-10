@@ -1,3 +1,5 @@
+import { logOut } from "@/containers/auth/action";
+import { useAppDispatch } from "@/lib/hook";
 import Avatar from "@/ui/atom/Avatar";
 import { Button } from "@/ui/atom/Button";
 import InputSearch from "@/ui/atom/InputSearch";
@@ -7,6 +9,8 @@ import Text from "@/ui/atom/typography/Text";
 import { Link, Outlet } from "react-router-dom";
 
 function DashboardLayout() {
+  const dispatch = useAppDispatch();
+
   return (
     <div className="flex">
       <div className="flex flex-col items-start justify-between p-[22px] border-l-2 w-[340px] h-[100vh]">
@@ -43,7 +47,10 @@ function DashboardLayout() {
             <span>{`محمد`}</span>
           </Link>
           <div className="flex items-center justify-between pl-[20px]">
-            <span className="flex items-center gap-1 cursor-pointer">
+            <span
+              className="flex items-center gap-1 cursor-pointer"
+              onClick={() => dispatch(logOut())}
+            >
               <SvgIcon name="logout" width="30" height="30" />
               <span className="text-gray-primary">خروج</span>
             </span>
