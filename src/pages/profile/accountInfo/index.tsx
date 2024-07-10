@@ -21,8 +21,12 @@ function AccountInfoPage() {
     dispatch(changePassword({oldPassword, newPassword, newPassword1}));
     
   };
-  const{data}=useSelector((state:any)=>state.account)
-  console.log(data)
+  function 
+  // const{data}=useSelector((state:any)=>state.account)
+  // console.log(data)
+
+
+
 
   return (
     <div>

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
-import authService from "../auth/service";
+import { changePasswordApi, updateAccountApi } from "@/services/account";
 type initialStateType = {
 data:any;
 isLoading: boolean;
@@ -21,7 +21,7 @@ message: "",
 export const changePassword = createAsyncThunk("Account/ChangePass",
     async (userData:any,thunkAPI)=>{
         try{
-            return await authService.changePassword(userData);
+            return await changePasswordApi(userData);
         }catch(error:unknown){
             if (error instanceof AxiosError){
               const message = error?.response?.data?.detail || "مشکلی به وجود آمده";
@@ -33,6 +33,27 @@ export const changePassword = createAsyncThunk("Account/ChangePass",
     }
 
 );
+// updateAccount
+export const accountUpdate = createAsyncThunk(
+  "Account/update",
+  async ( body: any, thunkAPI) => {
+    try {
+      return await updateAccountApi(body);
+    } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        const message = error?.response?.data?.detail || "مشکلی به وجود آمده";
+
+        return thunkAPI.rejectWithValue(message);
+      }
+    }
+  }
+);
+
+
+
+
+
+
 const accountSlice = createSlice({
   name: "account",
   initialState,
