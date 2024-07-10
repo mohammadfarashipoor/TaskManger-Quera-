@@ -1,8 +1,8 @@
 import Axios from "@/utils/axios";
 
 const getAllProjectMembersApi = async (
-  projectId: string,
-  workspaceId: string
+  projectId: projectIdType,
+  workspaceId: workspaceIdType
 ) => {
   const res = await Axios.get(
     `/workspaces/${workspaceId}/projects/${projectId}/members/`
@@ -10,18 +10,18 @@ const getAllProjectMembersApi = async (
   return res.data;
 };
 const getProjectMemberApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   memberId: string
 ) => {
   const res = await Axios.get(
-    `/workspaces/${workspaceId}/projects/${projectId}/members/${memberId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/members/${memberId}/`
   );
   return res.data;
 };
 const createProjectMemberApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   body: {
     user: string;
   }
@@ -33,24 +33,24 @@ const createProjectMemberApi = async (
   return res.data;
 };
 const updateProjectMemberApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   memberId: string,
   body: userTaskBody
 ) => {
   const res = await Axios.patch(
-    `/workspaces/${workspaceId}/projects/${projectId}/members/${memberId}`,
+    `/workspaces/${workspaceId}/projects/${projectId}/members/${memberId}/`,
     body
   );
   return res.data;
 };
 const deleteProjectMemberApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   memberId: string
 ) => {
   const res = await Axios.delete(
-    `/workspaces/${workspaceId}/projects/${projectId}/members/${memberId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/members/${memberId}/`
   );
   return res.data;
 };

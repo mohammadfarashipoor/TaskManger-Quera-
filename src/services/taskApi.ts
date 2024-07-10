@@ -1,41 +1,41 @@
 import Axios from "@/utils/axios";
 
 const changeTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   body: createTaskBody
 ) => {
   return Axios.put(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}`,
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/`,
     body
   );
 };
 const createTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   body: createTaskBody
 ) => {
   return Axios.post(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks`,
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/`,
     body
   );
 };
 const deleteTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string
 ) => {
   return Axios.delete(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/task/${taskId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/task/${taskId}/`
   );
 };
 const getAllTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string
 ) => {
   return Axios.get(
@@ -43,18 +43,18 @@ const getAllTaskApi = async (
   );
 };
 const getTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string
 ) => {
   return Axios.get(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/`
   );
 };
 const getAllAssignTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string
 ) => {
@@ -63,19 +63,19 @@ const getAllAssignTaskApi = async (
   );
 };
 const getAssignTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   assigneeId: string
 ) => {
   return Axios.get(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/assignee/${assigneeId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/assignee/${assigneeId}/`
   );
 };
 const unassignTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   body: {
@@ -88,33 +88,33 @@ const unassignTaskApi = async (
   );
 };
 const assignTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   assigneeId: string,
   body: userTaskBody
 ) => {
   return Axios.put(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/assignee/${assigneeId}`,
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/assignee/${assigneeId}/`,
     body
   );
 };
 const deleteAssignTaskApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   assigneeId: string
 ) => {
   return Axios.delete(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/assignee/${assigneeId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/assignee/${assigneeId}/`
   );
 };
 
 const getAllTasksLogApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string
 ) => {
@@ -124,14 +124,14 @@ const getAllTasksLogApi = async (
   return res.data;
 };
 const getTaskLogApi = async (
-  projectId: string,
-  workspaceId: string,
+  projectId: projectIdType,
+  workspaceId: workspaceIdType,
   boardId: string,
   taskId: string,
   taskLogId: string
 ) => {
   const res = await Axios.get(
-    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/logs/${taskLogId}`
+    `/workspaces/${workspaceId}/projects/${projectId}/boards/${boardId}/tasks/${taskId}/logs/${taskLogId}/`
   );
   return res.data;
 };

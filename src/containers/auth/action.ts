@@ -128,10 +128,11 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         routerHook()("/");
-
         state.isLoading = false;
         state.isError = false;
-        state.data = action.payload.data;
+        state.data = action.payload;
+        localStorage.setItem("accessToken", state.data.access);
+        localStorage.setItem("refreshToken", state.data.refresh);
         state.message = "با موفقیت وارد شدید";
       })
       .addCase(login.rejected, (state, action) => {

@@ -9,12 +9,12 @@ type updateUserBody = {
   lastname?: string;
 };
 const getUserApi = async (userId: string) => {
-  const res = await Axios.get(`users/${userId}`);
+  const res = await Axios.get(`users/${userId}/`);
   return res.data;
 };
 
 const updateUserInfoApi = async (userId: string, body: updateUserBody) => {
-  const res = await Axios.put(`users/${userId}`, body);
+  const res = await Axios.put(`users/${userId}/`, body);
   return res.data;
 };
 

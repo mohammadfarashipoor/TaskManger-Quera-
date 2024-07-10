@@ -1,3 +1,4 @@
+import { logOut } from "@/containers/auth/action";
 import Avatar from "@/ui/atom/Avatar";
 import { Button } from "@/ui/atom/Button";
 import InputSearch from "@/ui/atom/InputSearch";
@@ -57,7 +58,10 @@ function DashboardLayout() {
             <span>{`محمد`}</span>
           </Link>
           <div className="flex items-center justify-between pl-[20px]">
-            <span className="flex items-center gap-1 cursor-pointer">
+            <span
+              className="flex items-center gap-1 cursor-pointer"
+              onClick={() => dispatch(logOut())}
+            >
               <SvgIcon name="logout" width="30" height="30" />
               <span className="text-gray-primary">خروج</span>
             </span>
