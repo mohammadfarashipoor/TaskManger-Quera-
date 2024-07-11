@@ -6,7 +6,7 @@ const getAllWorkspacesApi = async () => {
 };
 
 const getWorkspacesByIdApi = async (workspaceId: workspaceIdType) => {
-  const res = await Axios.get(`/workspace/${workspaceId}`);
+  const res = await Axios.get(`/workspace/${workspaceId}/`);
   return res.data;
 };
 
