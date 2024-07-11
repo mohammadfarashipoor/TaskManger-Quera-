@@ -5,7 +5,7 @@ import InputText from "@/ui/atom/InputText";
 import Text from "@/ui/atom/typography/Text";
 import FormContainer from "@/ui/molocol/FormContainer";
 import { schemaAccountInfo } from "@/validation/validationSchema";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 interface AccountData {
   username: string;
@@ -17,13 +17,11 @@ interface AccountData {
 function AccountInfoPage() {
   const dispatch =useAppDispatch()
   const onSubmit = (data: AccountData) => {
-    const { oldPassword, newPassword, newPassword1 }=data;
-    dispatch(changePassword({oldPassword, newPassword, newPassword1}));
+    dispatch(changePassword(data));
     
   };
-  // function 
-  // const{data}=useSelector((state:any)=>state.account)
-  // console.log(data)
+  const data = useSelector((state: any) => state.account);
+  console.log(data.message[Object.keys(data.message)[0]][0]);
 
 
 

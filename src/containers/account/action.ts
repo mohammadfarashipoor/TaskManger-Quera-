@@ -7,7 +7,6 @@ import {
   getAccountApi,
   getAllAccountsApi,
  } from "@/services/accountApi";
-// import action from "../auth/action";
 
 
 type initialStateType = {
@@ -33,13 +32,13 @@ dataAccount: {},
 };
 
 //  changePassword;
-export const changePassword = createAsyncThunk("Account/ChangePass",
+export const changePassword = createAsyncThunk("account/changePassword",
     async (userData:any,thunkAPI)=>{
         try{
             return await changePasswordApi(userData);
         }catch(error:unknown){
             if (error instanceof AxiosError){
-              const message = error?.response?.data?.detail || "مشکلی به وجود آمده";
+              const message = error?.response?.data|| "مشکلی به وجود آمده";
 
             return thunkAPI.rejectWithValue(message);
 

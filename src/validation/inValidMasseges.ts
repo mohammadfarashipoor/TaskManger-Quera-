@@ -35,7 +35,7 @@ export const inValidMsgWorkspace = {
 };
 export const inValidMsgAccountInfo = {
   oldPassword: { min: "پسورد باید دارای حداقل ۵ کارکتر باشد" },
-  newPassword: { min: "پسورد باید دارای حداقل ۵ کارکتر باشد" },
-  newPassword1: { min: "پسورد باید دارای حداقل ۵ کارکتر باشد" },
+  newPassword: { min: "پسورد باید دارای حداقل ۸ کارکتر باشد" },
+  newPassword1: { min: "پسورد باید دارای حداقل ۸ کارکتر باشد" },
 };
 

@@ -27,7 +27,11 @@ const updateSettingApi = async (body: { theme: string }) => {
   return res.data;
 };
 const changePasswordApi = async(userData:any)=>{
-  const res = await Axios.put(`/accounts/change-password/`,userData)
+  const res = await Axios.put(`/accounts/change-password/`, {
+    old_password:userData.oldPassword,
+    new_password:userData.newPassword,
+    new_password1:userData.newPassword1,
+  });
   return res.data
 }
 export {
