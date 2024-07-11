@@ -6,7 +6,8 @@ const Axios = axios.create({
 
 Axios.interceptors.request.use(
   async (req) => {
-    req.headers["jwtAuth"] = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("accessToken");
+    req.headers["Authorization"] = `Bearer ${accessToken}`;
     return req;
   },
   (error) => {
@@ -30,7 +31,7 @@ Axios.interceptors.response.use(
 
       //set new token
       localStorage.setItem("accessToken", token);
-      axios.defaults.headers.common["jwtAuth"] = token;
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
       return Axios(prevRequest);
     }
