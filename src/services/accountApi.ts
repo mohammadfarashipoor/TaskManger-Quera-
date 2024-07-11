@@ -9,7 +9,7 @@ const getAccountApi = async (accountId: string) => {
   const res = await Axios.get(`/account/${accountId}/`);
   return res.data;
 };
-const updadteAccountApi = async (accountId: string, body: userTaskBody) => {
+const updateAccountApi = async (accountId: string, body: userTaskBody) => {
   const res = await Axios.patch(`/account/${accountId}/`, body);
   return res.data;
 };
