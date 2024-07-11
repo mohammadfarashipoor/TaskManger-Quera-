@@ -1,17 +1,17 @@
 import Axios from "@/utils/axios";
 
 const getAllWorkspacesApi = async () => {
-  const res = await Axios.get(`/workspace/`);
+  const res = await Axios.get(`/workspaces/`);
   return res.data;
 };
 
 const getWorkspacesByIdApi = async (workspaceId: workspaceIdType) => {
-  const res = await Axios.get(`/workspace/${workspaceId}/`);
+  const res = await Axios.get(`/workspaces/${workspaceId}/`);
   return res.data;
 };
 
 const createWorkSpaceApi = async (body: { name: string; color: string }) => {
-  const res = await Axios.post(`/workspace/`, body);
+  const res = await Axios.post(`/workspaces/`, body);
   return res.data;
 };
 
@@ -22,7 +22,7 @@ const updateWorkspaceApi = async (
     color?: string;
   }
 ) => {
-  const res = await Axios.patch(`/workspace/${id}/`, body);
+  const res = await Axios.patch(`/workspaces/${id}/`, body);
   return res.data;
 };
 
@@ -30,12 +30,12 @@ const addMemberToWorkspaceApi = async (
   username: string,
   workspaceId: workspaceIdType
 ) => {
-  const res = await Axios.put(`/workspace/${workspaceId}/members/${username}/`);
+  const res = await Axios.put(`/workspaces/${workspaceId}/members/${username}/`);
   return res.data;
 };
 
 const deleteWorkspaceApi = async (workspaceId: workspaceIdType) => {
-  const res = await Axios.delete(`/workspace/${workspaceId}/`);
+  const res = await Axios.delete(`/workspaces/${workspaceId}/`);
   return res.data;
 };
 
