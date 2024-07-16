@@ -30,7 +30,7 @@ function LoginPage() {
           <InputText name="username" label="نام کاربری" classNames="mb-4" />
           <InputText type="password" name="password" label="رمز عبور" classNames="mb-2" />
           <Link to='/forgot' className="flex underline">رمز عبور خود را فراموش کرده اید؟</Link>
-          <Button className="mt-6" type="submit" isBold isprimary>ورود</Button>
+          <Button className="mt-6" type="submit" isBold >ورود</Button>
           <div className="mt-4">
             <Text>
             ثبت نام نکرده ای؟

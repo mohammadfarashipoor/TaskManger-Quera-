@@ -51,7 +51,7 @@ function DashboardLayout() {
         </div>
         <div className="pb-[40px] self-stretch">
           <Link
-            to="/profile"
+            to="/personalinfo"
             className="flex gap-3 items-center mb-6 cursor-pointer"
           >
             <Avatar />

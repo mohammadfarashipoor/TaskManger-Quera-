@@ -6,6 +6,7 @@ import {
   inValidMsgPersonalInfo,
   inValidMsgReset,
   inValidMsgWorkspace,
+  inValidMsgAccountInfo,
 } from "./inValidMasseges";
 export const schemaLogin = z.object({
   username: z.string().min(1, inValidMsgLogin.username.min),
@@ -36,7 +37,7 @@ export const schemaForgotPage = z.object({
 export const schemaReset = z
   .object({
     password: z.string().min(5, inValidMsgReset.password.min),
-    confirm: z.string().min(5, inValidMsgReset.confirm.min),
+    confirm: z.string().min(5, inValidMsgReset.confrim.min),
   })
   .refine((data) => data.password === data.confirm, {
     message: "پسوردها برابر نیستند",
@@ -49,14 +50,15 @@ export const schemaPersonalInfo = z.object({
 });
 export const schemaAccountInfo = z
   .object({
-    email: z.string().email(inValidMsgForgot.email.email),
+    // email: z.string().email(inValidMsgForgot.email.email),
     username: z.string().min(1, inValidMsgLogin.username.min),
-    password: z.string().min(5, inValidMsgReset.password.min),
-    confirm: z.string().min(5, inValidMsgReset.confirm.min),
+    oldPassword: z.string().min(5, inValidMsgAccountInfo.oldPassword.min),
+    newPassword: z.string().min(8, inValidMsgAccountInfo.newPassword.min),
+    newPassword1: z.string().min(8, inValidMsgAccountInfo.newPassword1.min),
   })
-  .refine((data) => data.password === data.confirm, {
+  .refine((data) => data.newPassword === data.newPassword1, {
     message: "پسوردها برابر نیستند",
-    path: ["confirm"],
+    path: ["newPassword1"],
   });
 
 export const schemaWorkspaceName = z.object({

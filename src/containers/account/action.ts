@@ -1,27 +1,66 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import {
+  changePasswordApi,
+  updateAccountApi,
   deleteAccountApi,
   getAccountApi,
   getAllAccountsApi,
-  updadteAccountApi,
-} from "@/services/accountApi";
+ } from "@/services/accountApi";
+
 
 type initialStateType = {
-  dataAllAccounts: any;
-  dataAccount: any;
-  isLoading: boolean;
-  isError: boolean;
-  message: unknown;
+data:any;
+isLoading: boolean;
+isError: boolean;
+message: unknown;
+dataAllAccounts: any;
+dataAccount: any;
+
+
 };
 
 const initialState: initialStateType = {
-  dataAllAccounts: {},
-  dataAccount: {},
-  isLoading: false,
-  isError: false,
-  message: "",
+data:{},
+isLoading: false,
+isError: false,
+message: "",
+dataAllAccounts: {},
+dataAccount: {},
+
+
 };
+
+//  changePassword;
+export const changePassword = createAsyncThunk("account/changePassword",
+    async (userData:any,thunkAPI)=>{
+        try{
+            return await changePasswordApi(userData);
+        }catch(error:unknown){
+            if (error instanceof AxiosError){
+              const message = error?.response?.data|| "مشکلی به وجود آمده";
+
+            return thunkAPI.rejectWithValue(message);
+
+            }
+        }
+    }
+
+);
+// updateAccount
+export const accountUpdate = createAsyncThunk(
+  "Account/update",
+  async ({accountId,body}:{accountId:string ,body:any}
+    ,thunkAPI) => {
+    try {
+      return await updateAccountApi(accountId,body);
+    }catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        const message = error?.response?.data || "مشکلی به وجود آمده";
+        return thunkAPI.rejectWithValue(message);
+      }
+    
+    }});
 
 // get all user
 export const getAllAccounts = createAsyncThunk(
@@ -64,7 +103,7 @@ export const updateAccount = createAsyncThunk(
     thunkAPI
   ) => {
     try {
-      return await updadteAccountApi(userId, body);
+      return await updateAccountApi(userId, body);
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
         const message = error?.response?.data?.detail || "مشکلی به وجود آمده";
@@ -88,39 +127,29 @@ export const deleteAccount = createAsyncThunk(
     }
   }
 );
+
+
+
 const accountSlice = createSlice({
   name: "account",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getAllAccounts.pending, (state) => {
+      //  changePassword;
+      .addCase(changePassword.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getAllAccounts.fulfilled, (state, action) => {
+      .addCase(changePassword.fulfilled, (state, action) => {
+        state.data = action.payload;
         state.isLoading = false;
-        state.isError = false;
-        state.dataAllAccounts = action.payload;
+        state.message = action.payload;
       })
-      .addCase(getAllAccounts.rejected, (state, action) => {
-        state.isLoading = false;
+      .addCase(changePassword.rejected, (state, action) => {
         state.isError = true;
         state.message = action.payload;
       })
-
-      .addCase(getAccount.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getAccount.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isError = false;
-        state.dataAccount = action.payload;
-      })
-      .addCase(getAccount.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-      })
+      // updateAccount
       .addCase(updateAccount.pending, (state) => {
         state.isLoading = true;
       })
@@ -134,6 +163,36 @@ const accountSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
+
+      // getAllAccounts
+      .addCase(getAllAccounts.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAllAccounts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.dataAllAccounts = action.payload;
+      })
+      .addCase(getAllAccounts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      // getAccount
+      .addCase(getAccount.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAccount.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.dataAccount = action.payload;
+      })
+      .addCase(getAccount.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      // deleteAccount
       .addCase(deleteAccount.pending, (state) => {
         state.isLoading = true;
       })
