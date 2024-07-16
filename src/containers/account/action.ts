@@ -56,7 +56,7 @@ export const accountUpdate = createAsyncThunk(
       return await updateAccountApi(accountId,body);
     }catch (error: unknown) {
       if (error instanceof AxiosError) {
-        const message = error?.response?.data?.detail || "مشکلی به وجود آمده";
+        const message = error?.response?.data || "مشکلی به وجود آمده";
         return thunkAPI.rejectWithValue(message);
       }
     
@@ -143,15 +143,27 @@ const accountSlice = createSlice({
       .addCase(changePassword.fulfilled, (state, action) => {
         state.data = action.payload;
         state.isLoading = false;
+        state.message = action.payload;
       })
       .addCase(changePassword.rejected, (state, action) => {
         state.isError = true;
         state.message = action.payload;
       })
-      // updateAccountApi
-      .addCase(accountUpdate.pending,(state)=>{
-       state.isLoading = true;        
+      // updateAccount
+      .addCase(updateAccount.pending, (state) => {
+        state.isLoading = true;
       })
+      .addCase(updateAccount.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.dataAccount = action.payload;
+      })
+      .addCase(updateAccount.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+
       // getAllAccounts
       .addCase(getAllAccounts.pending, (state) => {
         state.isLoading = true;
@@ -166,7 +178,7 @@ const accountSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
-// getAccount
+      // getAccount
       .addCase(getAccount.pending, (state) => {
         state.isLoading = true;
       })
@@ -176,20 +188,6 @@ const accountSlice = createSlice({
         state.dataAccount = action.payload;
       })
       .addCase(getAccount.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-      })
-      // updateAccount
-      .addCase(updateAccount.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(updateAccount.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isError = false;
-        state.dataAccount = action.payload;
-      })
-      .addCase(updateAccount.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

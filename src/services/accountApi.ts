@@ -15,7 +15,7 @@ const updateAccountApi = async (accountId: string, body: userTaskBody) => {
 };
 
 const deleteAccountApi = async (accountId: string) => {
-  const res = await Axios.delete(`/account/${accountId}/`);
+  const res = await Axios.delete(`/accounts/${accountId}/`);
   return res.data;
 };
 const getSettingApi = async () => {

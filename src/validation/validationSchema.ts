@@ -53,8 +53,8 @@ export const schemaAccountInfo = z
     // email: z.string().email(inValidMsgForgot.email.email),
     username: z.string().min(1, inValidMsgLogin.username.min),
     oldPassword: z.string().min(5, inValidMsgAccountInfo.oldPassword.min),
-    newPassword: z.string().min(5, inValidMsgAccountInfo.newPassword.min),
-    newPassword1: z.string().min(5, inValidMsgAccountInfo.newPassword1.min),
+    newPassword: z.string().min(8, inValidMsgAccountInfo.newPassword.min),
+    newPassword1: z.string().min(8, inValidMsgAccountInfo.newPassword1.min),
   })
   .refine((data) => data.newPassword === data.newPassword1, {
     message: "پسوردها برابر نیستند",
