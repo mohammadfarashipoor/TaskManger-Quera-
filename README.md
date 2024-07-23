@@ -1,3 +1,6 @@
+#Figma Link
+- [figma design](https://www.figma.com/design/3kHidEbbO8bOPYG9wux2Ej/TaskManager?node-id=0-1&t=4dCFoOWnTG6PF5lj-0)
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
