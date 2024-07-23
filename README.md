@@ -1,4 +1,4 @@
-#Figma Link
+# Figma Link
 - [figma design](https://www.figma.com/design/3kHidEbbO8bOPYG9wux2Ej/TaskManager?node-id=0-1&t=4dCFoOWnTG6PF5lj-0)
 
 # React + TypeScript + Vite
